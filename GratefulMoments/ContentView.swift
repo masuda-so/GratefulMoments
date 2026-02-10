@@ -24,10 +24,18 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .sampleDataContainer()
+        .environment(\.locale, Locale(identifier: "en"))
+}
+
+#Preview("Japanese language") {
+    ContentView()
+        .sampleDataContainer()
+        .environment(\.locale, Locale(identifier: "ja"))
 }
 
 #Preview("Dark") {
     ContentView()
         .sampleDataContainer()
         .preferredColorScheme(.dark)
+        .environment(\.locale, Locale(identifier: "en"))
 }
