@@ -55,7 +55,7 @@ struct AchievementsView: View {
         .frame(maxWidth: .infinity)
     }
     
-    func header(_ text: String) -> some View {
+    func header(_ text: LocalizedStringResource) -> some View {
         Text(text)
             .font(.subheadline.bold())
             .padding()
