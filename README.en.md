@@ -1,108 +1,84 @@
 # GratefulMoments
 
-A SwiftUI gratitude journal app that helps you capture daily moments of gratitude with notes and photos. Track your journaling streak, earn badges, and build a collection of positive memories.
+[日本語](./README.md) | English
+
+---
+
+## What is GratefulMoments?
+
+**GratefulMoments** is a personal gratitude journal app built with SwiftUI. Capture daily moments of gratitude with a title, note, and optional photo. Track your journaling streak, unlock achievement badges, and build a collection of positive memories.
 
 ![iOS](https://img.shields.io/badge/iOS-17%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-5.9-orange)
 ![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20macOS-lightgray)
 
-[日本語](./README.md) | English
+---
 
-## What the project does
+## Key Features & Benefits
 
-GratefulMoments is a personal gratitude journal app that lets you:
-
-- **Capture moments** — Record gratitude entries with a title, note, and optional photo
-- **Track your streak** — Monitor consecutive days of journaling to build a consistent habit
-- **Earn badges** — Unlock achievements as you progress on your gratitude journey
-- **Browse history** — View your past moments in a visually appealing hexagonal layout
-
-## Why the project is useful
-
-- **Build positive habits** — Daily gratitude journaling has been linked to improved well-being
-- **Modern SwiftUI patterns** — Demonstrates `@Observable`, SwiftData, and environment injection
-- **Custom UI components** — Includes a unique hexagonal grid layout for displaying moments
-- **Badge motivation system** — Gamifies the journaling experience with unlockable achievements
-
-## Key features
-
-| Feature | Description |
-|---------|-------------|
-| Moment capture | Create entries with title, note, and optional photo |
-| Photo support | Use `PhotosPicker` to attach images from your library |
-| SwiftData persistence | All moments stored locally using SwiftData |
-| Streak tracking | Calculate consecutive journaling days |
-| Badge system | Unlock achievements based on activity |
-| Hexagonal UI | Custom `HexagonLayout` for visual moment display |
-| Sample data | Pre-built sample moments for previews and testing |
+- **Capture moments**: Create gratitude entries with title, note, and photo
+- **Streak tracking**: Visualize your daily journaling habit
+- **Earn badges**: Unlock achievements as you progress
+- **Hexagonal UI**: Unique, visually appealing grid layout
+- **SwiftData persistence**: All data is stored locally and securely
+- **Sample data**: Pre-built moments for preview and testing
 
 ### Available Badges
+- Start the Journey (log your first moment)
+- 5 Stars (record five moments)
+- Shutterbug (add three entries with photos)
+- Expressive (add five moments with both photo and text)
+- Perfect 10 (collect all badges and record at least 10 moments)
 
-- **Start the Journey** — Log your first moment
-- **5 Stars** — Record five moments
-- **Shutterbug** — Add three entries with photos
-- **Expressive** — Add five moments with both photo and text
-- **Perfect 10** — Record at least 10 moments while collecting all other badges
+---
 
-## Getting started
+## Getting Started
 
 ### Requirements
+- Xcode 15 or later
+- iOS 17 SDK or later / macOS 14 or later
 
-- **Xcode 15** or later
-- **iOS 17** or later SDK
-
-### Build and run
-
+### Installation
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/GratefulMoments.git
-   ```
-
+    ```bash
+    git clone https://github.com/yourusername/GratefulMoments.git
+    cd GratefulMoments
+    ```
 2. Open `GratefulMoments.xcodeproj` in Xcode
-
-3. Select a target simulator or device
-
-4. Press `Cmd + R` to build and run
+3. Select a simulator or device, then press **Cmd+R** to build and run
 
 ### Usage
+1. Tap the `+` button in the Moments tab to create a new entry
+2. Enter a title, note, and optionally select a photo
+3. Switch to the Achievements tab to view your streak and badges
 
-1. **Record a moment**: Tap the `+` button to create a new gratitude entry
-2. **Add photos**: Use the photo picker to attach images
-3. **View history**: Browse past moments in the hexagonal layout
-4. **View achievements**: Switch to the Achievements tab to see unlocked badges
+---
 
-## Project structure
+## Project Structure
 
 ```
 GratefulMoments/
 ├── Custom Views/          # Custom UI components
-│   ├── Hexagon.swift
-│   ├── HexagonAccessoryView.swift
-│   └── HexagonLayout.swift
 ├── Logic/                 # Business logic
-│   ├── DataContainer.swift
-│   └── StreakCalculator.swift
 ├── Models/                # Data models
-│   ├── Badge.swift
-│   ├── BadgeDetails.swift
-│   ├── BadgeManager.swift
-│   └── Moment.swift
-└── Tabs/                  # Screen tabs
-    ├── Achievements/
-    └── Moments/
+├── Tabs/                  # Main app tabs
+├── Assets.xcassets/       # Images, badges, and other assets
+├── ContentView.swift      # Main tab view
+└── GratefulMomentsApp.swift # App entry point
 ```
 
-## Where to get help
+---
 
-- If you have issues or questions, create a [GitHub Issue](https://github.com/yourusername/GratefulMoments/issues)
-- Bug reports and feature requests are welcome
+## Where to Get Help
+- For questions or bug reports, open a [GitHub Issue](https://github.com/yourusername/GratefulMoments/issues)
+
+---
 
 ## License
+This project is licensed under the Apache License 2.0. See the [LICENSE](./LICENSE) file for details.
 
-This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
+---
 
-## Who maintains and contributes
-
-- 増田創 (Soh Masuda) — Original developer
-
-Contributions are welcome! See [CONTRIBUTING.md](../CONTRIBUTING.md) (coming soon) for details.
+## Who Maintains and Contributes
+- Soh Masuda — Original developer
+- Contributions are welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) (coming soon) for details.
