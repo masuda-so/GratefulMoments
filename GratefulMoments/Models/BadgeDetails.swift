@@ -15,7 +15,7 @@ enum BadgeDetails: Int, Codable, CaseIterable {
     case expressive
     case perfectTen
     
-    var requirements: String {
+    var requirements: LocalizedStringResource {
         switch self {
         case .firstEntry:
             return "Log a moment to start your journey."
@@ -29,8 +29,8 @@ enum BadgeDetails: Int, Codable, CaseIterable {
             return "Record at least 10 moments, collecting all the other badges along the way."
         }
     }
-    
-    var title: String {
+
+    var title: LocalizedStringResource {
         switch self {
         case .firstEntry:
             return "Start the Journey"
@@ -90,7 +90,7 @@ enum BadgeDetails: Int, Codable, CaseIterable {
         }
     }
     
-    var congratulatoryMessage: String {
+    var congratulatoryMessage: LocalizedStringResource {
         switch self {
         case .firstEntry:
             return "Every journey begins with a single step. Congratulations — you’re on your way!"
