@@ -10,8 +10,15 @@ import SwiftData
 
 struct MomentsView: View {
     @State private var showCreateMoment = false
+    @State private var paywallSource: PaywallSource?
+    @State private var isShowingExportOptions = false
+    @State private var exportedFile: ExportedMomentFile?
+    @State private var exportErrorMessage: String?
+    @State private var isExporting = false
+    
     @Query(sort: \Moment.timestamp)
     private var moments: [Moment]
+    @Environment(PurchaseManager.self) private var purchaseManager
     
     static let offsetAmount: CGFloat = 70.0
     
@@ -37,16 +44,45 @@ struct MomentsView: View {
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
+                ToolbarItemGroup(placement: .primaryAction) {
                     Button {
-                        showCreateMoment = true
+                        handleExport()
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
+                    }
+                    .disabled(moments.isEmpty || isExporting)
+                    
+                    Button {
+                        handleCreateMoment()
                     } label: {
                         Image(systemName: "plus")
                     }
-                    .sheet(isPresented: $showCreateMoment) {
-                        MomentEntryView()
-                    }
                 }
+            }
+            .sheet(isPresented: $showCreateMoment) {
+                MomentEntryView()
+            }
+            .sheet(item: $paywallSource) { source in
+                PaywallView(source: source)
+            }
+            .sheet(item: $exportedFile) { exportedFile in
+                ActivityView(activityItems: [exportedFile.url])
+            }
+            .confirmationDialog("Export Moments", isPresented: $isShowingExportOptions) {
+                Button("PDF") {
+                    exportMoments(as: .pdf)
+                }
+                Button("CSV") {
+                    exportMoments(as: .csv)
+                }
+            } message: {
+                Text("Choose an export format.")
+            }
+            .alert("Export Failed", isPresented: isShowingExportError) {
+                Button("OK", role: .cancel) {
+                }
+            } message: {
+                Text(exportErrorMessage ?? "Please try again.")
             }
             .defaultScrollAnchor(.bottom, for: .initialOffset)
             .defaultScrollAnchor(.bottom, for: .sizeChanges)
@@ -57,7 +93,7 @@ struct MomentsView: View {
     }
     
     private var pathItems: some View {
-        ForEach(moments.enumerated(), id: \.0) { index, moment in
+        ForEach(Array(moments.enumerated()), id: \.0) { index, moment in
             NavigationLink {
                 MomentDetailView(moment: moment)
             } label: {
@@ -89,6 +125,44 @@ struct MomentsView: View {
             .padding()
         }
     }
+    
+    private var isShowingExportError: Binding<Bool> {
+        Binding {
+            exportErrorMessage != nil
+        } set: { isShowing in
+            if !isShowing {
+                exportErrorMessage = nil
+            }
+        }
+    }
+    
+    private func handleCreateMoment() {
+        if purchaseManager.hasPremium || moments.count < PurchaseManager.freeMomentLimit {
+            showCreateMoment = true
+        } else {
+            paywallSource = .momentLimit
+        }
+    }
+    
+    private func handleExport() {
+        if purchaseManager.hasPremium {
+            isShowingExportOptions = true
+        } else {
+            paywallSource = .export
+        }
+    }
+    
+    private func exportMoments(as format: MomentExportFormat) {
+        isExporting = true
+        do {
+            exportedFile = try ExportedMomentFile(
+                url: MomentExporter.export(moments: moments, format: format)
+            )
+        } catch {
+            exportErrorMessage = error.localizedDescription
+        }
+        isExporting = false
+    }
 }
 
 #Preview {
@@ -100,4 +174,5 @@ struct MomentsView: View {
     MomentsView()
         .modelContainer(for: [Moment.self])
         .environment(DataContainer())
+        .environment(PurchaseManager.previewFree)
 }
