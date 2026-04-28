@@ -74,36 +74,36 @@ source: repo-analysis
 source_repo: https://github.com/masuda-so/GratefulMoments
 ---
 
-# GratefulMoments Import Relative
+# GratefulMoments Import Swift Modules
 
 ## Action
 
-Use relative imports for project files
+Use Swift module imports for frameworks and app modules. Do not use relative path imports in Swift files.
 
 ## Evidence
 
-- Import analysis shows relative import pattern
-- Example: import { x } from '../lib/x'
+- Source files import modules such as SwiftUI, SwiftData, Foundation, PhotosUI, and Testing
+- Tests use @testable import GratefulMoments
 
 ---
 id: GratefulMoments-export-style
-trigger: "when exporting from a module"
+trigger: "when choosing Swift symbol visibility"
 confidence: 0.7
 domain: code-style
 source: repo-analysis
 source_repo: https://github.com/masuda-so/GratefulMoments
 ---
 
-# GratefulMoments Export Style
+# GratefulMoments Swift Visibility
 
 ## Action
 
-Prefer named exports
+Prefer Swift's default internal visibility for app-only types, and use private for file-local helpers and implementation details.
 
 ## Evidence
 
-- Export pattern analysis
-- Dominant style: named
+- App source uses Swift declarations rather than export statements
+- Existing view helpers and state are commonly private where they are implementation details
 
 ---
 id: GratefulMoments-test-separate
@@ -118,12 +118,12 @@ source_repo: https://github.com/masuda-so/GratefulMoments
 
 ## Action
 
-Place tests in the tests/ or __tests__/ directory, mirroring src structure
+Place tests in dedicated Xcode test target folders, using PascalCase file names that end in Tests.swift.
 
 ## Evidence
 
-- Separate test directory pattern detected
-- Tests live in dedicated test folders
+- StreakCalculatorTests/StreakCalculatorTests.swift belongs to the GratefulMomentsTests target
+- Tests use Swift Testing with @Test and #expect(...)
 
 ---
 id: gratefulmoments-instinct-file-naming
@@ -195,11 +195,12 @@ source_repo: masuda-so/GratefulMoments
 
 ## Action
 
-Use SCREAMING_SNAKE_CASE for the constant name
+Use lowerCamelCase for Swift constants and stored properties. Use static let for shared samples and constants when appropriate.
 
 ## Evidence
 
-- Pattern in namingConventions.constants: SCREAMING_SNAKE_CASE
+- Existing constants include dataContainer, sampleContainer, sampleData, model, and offsetAmount
+- The codebase follows Swift naming conventions rather than SCREAMING_SNAKE_CASE
 
 ---
 id: gratefulmoments-instinct-import-style
@@ -214,30 +215,32 @@ source_repo: masuda-so/GratefulMoments
 
 ## Action
 
-Use relative import paths
+Import Swift modules directly, such as SwiftUI, SwiftData, Foundation, PhotosUI, Testing, and @testable import GratefulMoments in tests.
 
 ## Evidence
 
-- Pattern in importStyle: relative
+- Swift files use module imports
+- No source files use relative import paths
 
 ---
 id: gratefulmoments-instinct-export-style
-trigger: "When exporting symbols in Swift"
+trigger: "When choosing symbol visibility in Swift"
 confidence: 0.8
 domain: code-style
 source: repo-analysis
 source_repo: masuda-so/GratefulMoments
 ---
 
-# Gratefulmoments Instinct Export Style
+# Gratefulmoments Instinct Swift Visibility
 
 ## Action
 
-Use named exports
+Keep declarations internal by default, add private for implementation details, and avoid public visibility unless a cross-module need exists.
 
 ## Evidence
 
-- Pattern in exportStyle: named
+- Swift does not use named export syntax
+- Existing files primarily rely on app-internal declarations and private helpers
 
 ---
 id: gratefulmoments-instinct-commit-prefix
@@ -297,4 +300,3 @@ Place test files in a separate directory from source files
 ## Evidence
 
 - Pattern in architecture.folderStructure.testLocation: separate
-
