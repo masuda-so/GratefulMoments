@@ -1,94 +1,96 @@
 # GratefulMoments
 
-A SwiftUI gratitude journal app that helps you capture daily moments of gratitude with notes and photos. Track your journaling streak, earn badges, and build a collection of positive memories.
+SwiftUIで開発した感恩日記アプリです。毎日の感恩时刻を記録し、メモや写真を追加できます。記録の連続日数を確認し、成就バッジを獲得して積極的な思い出のコレクションを築きましょう。
 
 ![iOS](https://img.shields.io/badge/iOS-17%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-5.9-orange)
-![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20macOS-lightgray)
+![プラットフォーム](https://img.shields.io/badge/Platform-iOS%20%7C%20macOS-lightgray)
 
-## What the project does
+[English](./README.en.md) | 日本語
 
-GratefulMoments is a personal gratitude journal app that lets you:
+## このプロジェクトについて
 
-- **Capture moments** — Record gratitude entries with a title, note, and optional photo
-- **Track your streak** — Monitor consecutive days of journaling to build a consistent habit
-- **Earn badges** — Unlock achievements as you progress on your gratitude journey
-- **Browse history** — View your past moments in a visually appealing hexagonal layout
+GratefulMomentsは毎日の感恩时刻を記録できる個人用感恩日記アプリです：
 
-## Why the project is useful
+- **时刻の記録** — タイトル、メモ、オプションで写真を付けて感恩エントリーを作成
+- **連続日数の追跡** — 連続して記録した日数を監視し、習慣を継続
+- **バッジを獲得** — 感恩の旅で成就を達成
+- **履歴を閲覧** — 視覚的に魅力的な六角形レイアウトで過去の时刻を表示
 
-- **Build positive habits** — Daily gratitude journaling has been linked to improved well-being
-- **Modern SwiftUI patterns** — Demonstrates `@Observable`, SwiftData, and environment injection
-- **Custom UI components** — Includes a unique hexagonal grid layout for displaying moments
-- **Badge motivation system** — Gamifies the journaling experience with unlockable achievements
+## このプロジェクトが役立つ理由
 
-## Key features
+- **積極的な習慣を形成** — 毎日の感恩日記は身心健康の改善に関連
+- **最新のSwiftUIパターン** — `@Observable`、SwiftData、環境注入を展示
+- **カスタムUIコンポーネント** — 时刻を表示する独自の六角形グリッドレイアウト
+- **バッジ激励システム** — アンロック可能な成就で日記体験をゲーミフィケーション
 
-| Feature | Description |
-|---------|-------------|
-| Moment capture | Create entries with title, note, and optional photo |
-| Photo support | Use `PhotosPicker` to attach images from your library |
-| SwiftData persistence | All moments stored locally using SwiftData |
-| Streak tracking | Calculate consecutive journaling days |
-| Badge system | Unlock achievements based on activity |
-| Hexagonal UI | Custom `HexagonLayout` for visual moment display |
-| Sample data | Pre-built sample moments for previews and testing |
+## 主な機能
 
-### Available Badges
+| 機能 | 説明 |
+|--------|-------------|
+| 时刻記録 | タイトル、メモ、オプションで写真のエントリーを作成 |
+| 写真サポート | `PhotosPicker`を使用してライブラリから画像を添付 |
+| SwiftData永続化 | SwiftDataを使用してすべての时刻をローカルに保存 |
+| 連続日数追跡 | 連続して記録した日数を計算 |
+| バッジシステム | アクティビティに基づいて成就をアンロック |
+| 六角形UI | 时刻の視覚的な表示のためのカスタム`HexagonLayout` |
+| サンプルデータ | プレビューとテスト用の事前構築のサンプル时刻 |
 
-- **Start the Journey** — Log your first moment
-- **5 Stars** — Record five moments
-- **Shutterbug** — Add three entries with photos
-- **Expressive** — Add five moments with both photo and text
-- **Perfect 10** — Record at least 10 moments while collecting all other badges
+### 利用可能なバッジ
 
-## Getting started
+- **旅立ち** — 最初の时刻を記録
+- **5つ星** — 5つの时刻を記録
+- **シャッターバグ** — 写真付きのエントリーを3つ追加
+- **表現者** — 写真とテキストの両方を備えた5つの时刻を追加
+- **パーフェクト10** — 他のすべてのバッジを収集しながら少なくとも10つの时刻を記録
 
-### Requirements
+## 始め方
 
-- **Xcode 15** or later
-- **iOS 17** or later SDK
-- **macOS 14** or later (for Mac support)
+### 必要環境
 
-### Installation
+- **Xcode 15** 以降
+- **iOS 17** 以降SDK
+- **macOS 14** 以降（Macサポート用）
 
-1. Clone the repository:
+### インストール
+
+1. リポジトリをクローン：
    ```bash
    git clone https://github.com/yourusername/GratefulMoments.git
    cd GratefulMoments
    ```
 
-2. Open the project in Xcode:
+2. Xcodeでプロジェクトを開く：
    ```bash
    open GratefulMoments.xcodeproj
    ```
 
-3. Select a simulator (e.g., iPhone 15 Pro) and press **Cmd+R** to build and run.
+3. シミュレーター（例：iPhone 15 Pro）を選択し、**Cmd+R**でビルドして実行。
 
-### Usage
+### 使い方
 
-1. **Add a moment** — Tap the `+` button in the Moments tab
-2. **Enter details** — Add a title, optional note, and optionally select a photo
-3. **Save** — Your moment is persisted automatically
-4. **View achievements** — Switch to the Achievements tab to see your streak and badges
+1. **时刻を追加** — Momentsタブの`+`ボタンをタップ
+2. **詳細を入力** — タイトル、オプションのメモ、オプションで写真を選択
+3. **保存** — 时刻は自動的に保存されます
+4. **成就を表示** — Achievementsタブに切り替えて連続日数とバッジを確認
 
-## Project structure
+## プロジェクト構造
 
 ```
 GratefulMoments/
-├── Custom Views/           # Reusable UI components
+├── Custom Views/           # 再利用可能なUIコンポーネント
 │   ├── Hexagon.swift
 │   ├── HexagonAccessoryView.swift
 │   └── HexagonLayout.swift
-├── Logic/                  # Business logic
+├── Logic/                  # ビジネスロジック
 │   ├── DataContainer.swift
 │   └── StreakCalculator.swift
-├── Models/                # Data models
+├── Models/                # データモデル
 │   ├── Badge.swift
 │   ├── BadgeDetails.swift
 │   ├── BadgeManager.swift
 │   └── Moment.swift
-├── Tabs/                  # Main app tabs
+├── Tabs/                  # メインアプリのタブ
 │   ├── Achievements/
 │   │   ├── AchievementsView.swift
 │   │   ├── BadgeDetailView.swift
@@ -100,32 +102,114 @@ GratefulMoments/
 │       ├── MomentEntryView.swift
 │       ├── MomentHexagonView.swift
 │       └── MomentsView.swift
-├── Assets.xcassets/       # App assets
-├── ContentView.swift      # Main tab view
-└── GratefulMomentsApp.swift  # App entry point
+├── Assets.xcassets/       # アセット
+├── ContentView.swift      # メインテブビュー
+└── GratefulMomentsApp.swift  # アプリエントリーポイント
 ```
 
-## Contributing
+## ヘルプの取得
 
-Contributions are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for details on the process for submitting pull requests.
+- 問題や質問がある場合は、[GitHub Issue](https://github.com/yourusername/GratefulMoments/issues)を作成してください
+- バグ報告や機能リクエストを歓迎します
 
-### Development setup
+## ライセンス
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+このプロジェクトはMITライセンスの下でライセンスされています - [LICENSE](../LICENSE)ファイルを参照してください。
 
-## License
+## メンテナンスとコントリビューター
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+- 増田創 (Soh Masuda) — オリジナル開発者
 
-## Support
+コントリビューションを歓迎します！詳細については、[CONTRIBUTING.md](../CONTRIBUTING.md)（準備中）を参照してください。
+| 时刻記録 | タイトル、メモ、オプションで写真のエントリーを作成 |
+| 写真サポート | `PhotosPicker`を使用してライブラリから画像を添付 |
+| SwiftData永続化 | SwiftDataを使用してすべての时刻をローカルに保存 |
+| 連続日数追跡 | 連続して記録した日数を计算 |
+| バッジシステム | アクティビティに基づいて成就をアンロック |
+| 六角形UI | 时刻の視覚的な表示のためのカスタム`HexagonLayout` |
+| サンプルデータ | プレビューとテスト用の预先构建のサンプル时刻 |
 
-- **Issues** — Report bugs and request features via [GitHub Issues](https://github.com/yourusername/GratefulMoments/issues)
-- **Discussions** — Use GitHub Discussions for questions and general feedback
+### 利用可能なバッジ
 
----
+- **旅立ち** — 最初の时刻を記録
+- **5つ星** — 5つの时刻を記録
+- **シャッターバグ** — 写真付きのエントリーを3つ追加
+- **表現者** — 写真とテキストの両方を備えた5つの时刻を追加
+- **パーフェクト10** — 他のすべてのバッジを収集しながら少なくとも10つの时刻を記録
+
+## 始め方
+
+### 必要環境
+
+- **Xcode 15** 以降
+- **iOS 17** 以降SDK
+- **macOS 14** 以降（Macサポート用）
+
+### インストール
+
+1. リポジトリをクローン：
+   ```bash
+   git clone https://github.com/yourusername/GratefulMoments.git
+   cd GratefulMoments
+   ```
+
+2. Xcodeでプロジェクトを開く：
+   ```bash
+   open GratefulMoments.xcodeproj
+   ```
+
+3. シミュレーター（例：iPhone 15 Pro）を選択し、**Cmd+R**でビルドして実行。
+
+### 使い方
+
+1. **时刻を追加** — Momentsタブの`+`ボタンをタップ
+2. **詳細を入力** — タイトル、オプションのメモ、オプションで写真を選択
+3. **保存** — 时刻は自動的に保存されます
+4. **成就を表示** — Achievementsタブに切り替えて連続日数とバッジを確認
+
+## プロジェクト構造
+
+```
+GratefulMoments/
+├── Custom Views/           # 再利用可能なUIコンポーネント
+│   ├── Hexagon.swift
+│   ├── HexagonAccessoryView.swift
+│   └── HexagonLayout.swift
+├── Logic/                  # ビジネスロジック
+│   ├── DataContainer.swift
+│   └── StreakCalculator.swift
+├── Models/                # データモデル
+│   ├── Badge.swift
+│   ├── BadgeDetails.swift
+│   ├── BadgeManager.swift
+│   └── Moment.swift
+├── Tabs/                  # メインアプリのタブ
+│   ├── Achievements/
+│   │   ├── AchievementsView.swift
+│   │   ├── BadgeDetailView.swift
+│   │   ├── LockedBadgeView.swift
+│   │   ├── StreakView.swift
+│   │   └── UnlockedBadgeView.swift
+│   └── Moments/
+│       ├── MomentDetailView.swift
+│       ├── MomentEntryView.swift
+│       ├── MomentHexagonView.swift
+│       └── MomentsView.swift
+```
+
+## ヘルプの取得
+
+- 問題や質問がある場合は、[GitHub Issue](https://github.com/yourusername/GratefulMoments/issues)を作成してください
+- バグ報告や機能リクエストを歓迎します
+
+## ライセンス
+
+このプロジェクトはMITライセンスの下でライセンスされています - [LICENSE](../LICENSE)ファイルを参照してください。
+
+## メンテナンスとコントリビューター
+
+- 増田創 (Soh Masuda) — オリジナル開発者
+
+コントリビューションを歓迎します！詳細については、[CONTRIBUTING.md](../CONTRIBUTING.md)（準備中）を参照してください。
 
 Built with ❤️ using SwiftUI and SwiftData
