@@ -10,6 +10,8 @@ import SwiftData
 import FoundationModels
 
 struct AssistantView: View {
+    @Environment(PurchaseManager.self) private var purchaseManager
+    
     var body: some View {
         NavigationStack {
             content
@@ -21,13 +23,31 @@ struct AssistantView: View {
     @ViewBuilder
     private var content: some View {
         if #available(iOS 26, *) {
-            AssistantChatView()
+            if purchaseManager.hasPremium {
+                AssistantChatView()
+            } else if AssistantFeatureAvailability.canUseAssistant {
+                PaywallView(source: .assistant, isPresentedModally: false)
+            } else {
+                UnavailableView(reason: SystemLanguageModel.default.availability.unavailableReason)
+            }
         } else {
             ContentUnavailableView {
                 Label("Assistant Unavailable", systemImage: "sparkles.slash")
             } description: {
                 Text("This feature requires iOS 26 or later with Apple Intelligence.")
             }
+        }
+    }
+}
+
+@available(iOS 26, *)
+private extension SystemLanguageModel.Availability {
+    var unavailableReason: SystemLanguageModel.Availability.UnavailableReason {
+        switch self {
+        case .available:
+            return .appleIntelligenceNotEnabled
+        case .unavailable(let reason):
+            return reason
         }
     }
 }
