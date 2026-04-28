@@ -1,0 +1,103 @@
+{
+  "identifier" : "GRATEFULMOMENTS_STOREKIT",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_locale" : "ja_JP",
+    "_storefront" : "JPN"
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "GRATEFULMOMENTS_PREMIUM",
+      "localizations" : [
+        {
+          "description" : "Unlock unlimited moments, reflection, and exports.",
+          "displayName" : "GratefulMoments Premium",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "無制限の記録、ふりかえり、エクスポートを解放します。",
+          "displayName" : "GratefulMoments Premium",
+          "locale" : "ja_JP"
+        }
+      ],
+      "name" : "GratefulMoments Premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "300",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "GM300MTH",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Monthly access to unlimited moments, reflection, and exports.",
+              "displayName" : "Premium Monthly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "無制限の記録、ふりかえり、エクスポートを月ごとに利用できます。",
+              "displayName" : "Premium 月額",
+              "locale" : "ja_JP"
+            }
+          ],
+          "productID" : "gratefulmoments.premium.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Monthly",
+          "subscriptionGroupID" : "GRATEFULMOMENTS_PREMIUM",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "2000",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "GM2000YR",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Yearly access to unlimited moments, reflection, and exports.",
+              "displayName" : "Premium Yearly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "無制限の記録、ふりかえり、エクスポートを年ごとに利用できます。",
+              "displayName" : "Premium 年額",
+              "locale" : "ja_JP"
+            }
+          ],
+          "productID" : "gratefulmoments.premium.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Premium Yearly",
+          "subscriptionGroupID" : "GRATEFULMOMENTS_PREMIUM",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

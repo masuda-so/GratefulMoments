@@ -10,12 +10,14 @@ import SwiftData
 
 @main
 struct GratefulMomentsApp: App {
-    let dataContainer = DataContainer()
+    @State private var dataContainer = DataContainer()
+    @State private var purchaseManager = PurchaseManager()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(dataContainer)
+                .environment(purchaseManager)
         }
         .modelContainer(dataContainer.modelContainer)
     }
