@@ -30,7 +30,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "5つ星"
+            "value" : "5つのありがとう"
           }
         }
       }
@@ -42,7 +42,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "実績"
+            "value" : "達成"
           }
         }
       }
@@ -66,7 +66,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "写真とテキスト付きのモーメントを5つ追加する。"
+            "value" : "写真とことばのあるできごとを5つ残す。"
           }
         }
       }
@@ -78,7 +78,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "写真付きのエントリーを3つ追加する。"
+            "value" : "写真付きのできごとを3つ残す。"
           }
         }
       }
@@ -102,7 +102,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アシスタント"
+            "value" : "ふりかえり"
           }
         }
       }
@@ -114,7 +114,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アシスタントは利用できません"
+            "value" : "ふりかえりは利用できません"
           }
         }
       }
@@ -138,7 +138,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "モーメントを削除"
+            "value" : "できごとを削除"
           }
         }
       }
@@ -150,7 +150,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "モーメントを破棄"
+            "value" : "下書きを破棄"
           }
         }
       }
@@ -162,7 +162,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "すべての旅は最初の一歩から始まります。おめでとうございます — 第一歩を踏み出しました!"
+            "value" : "最初のできごとを残せました。ここから、あなたのありがとう日記が始まります。"
           }
         }
       }
@@ -174,7 +174,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "表現者"
+            "value" : "ことばと写真"
           }
         }
       }
@@ -186,7 +186,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "今日のための励ましのメッセージをください。"
+            "value" : "今日の励ましがほしい"
           }
         }
       }
@@ -198,7 +198,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "感謝の対象"
+            "value" : "ありがとうを残す"
           }
         }
       }
@@ -210,7 +210,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "感謝のモーメント"
+            "value" : "ありがとう日記"
           }
         }
       }
@@ -222,7 +222,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "最近のモーメントを振り返るのを手伝って。"
+            "value" : "最近のできごとを振り返る"
           }
         }
       }
@@ -246,7 +246,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "最初のモーメントを記録して、旅を始めましょう。"
+            "value" : "最初のできごとを残して、ありがとう日記を始めましょう。"
           }
         }
       }
@@ -258,7 +258,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "小さな喜びを書き留めましょう"
+            "value" : "うれしかったことを書き留めましょう"
           }
         }
       }
@@ -270,7 +270,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "幸せな思い出を味わうあらゆる方法を自分に与えていますね!"
+            "value" : "ことばと写真の両方で、うれしかった気持ちを残せていますね。あとから見返す楽しみが増えています。"
           }
         }
       }
@@ -282,7 +282,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "モーメント"
+            "value" : "日記"
           }
         }
       }
@@ -294,7 +294,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "まだモーメントがありません!"
+            "value" : "まだ書かれていません"
           }
         }
       }
@@ -306,7 +306,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "パーフェクト10"
+            "value" : "10のありがとう"
           }
         }
       }
@@ -318,7 +318,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "写真は過去とのつながりを生み、見返すことで撮影した瞬間の感謝の気持ちにすぐ戻ることができます。"
+            "value" : "写真があると、そのときのうれしさをあとから思い出しやすくなります。"
           }
         }
       }
@@ -330,7 +330,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "メモや写真を投稿して、このスペースを感謝で満たしましょう。"
+            "value" : "メモや写真で、うれしかったできごとを残しましょう。"
           }
         }
       }
@@ -342,7 +342,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "他のバッジをすべて獲得しながら、10個以上のモーメントを記録する。"
+            "value" : "他のバッジをすべて集めながら、10個以上のできごとを残す。"
           }
         }
       }
@@ -354,7 +354,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "モーメントを5つ記録する。"
+            "value" : "5つのできごとを残す。"
           }
         }
       }
@@ -378,7 +378,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "シャッターバグ"
+            "value" : "写真の思い出"
           }
         }
       }
@@ -402,7 +402,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "旅立ち"
+            "value" : "はじめの一歩"
           }
         }
       }
@@ -450,7 +450,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "このモーメントは完全に削除されます。獲得したバッジは削除されません。"
+            "value" : "このできごとは完全に削除されます。獲得したバッジは削除されません。"
           }
         }
       }
@@ -486,7 +486,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "タイトル(必須)"
+            "value" : "タイトル（必須）"
           }
         }
       }
@@ -522,7 +522,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "私の感謝の記録にどんなパターンが見えますか?"
+            "value" : "私のありがとう日記には、どんな傾向がありますか？"
           }
         }
       }
@@ -534,7 +534,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "勢いがついてきましたね!定期的な実践に集中するほど、意図した習慣を続ける選択が上手になります。"
+            "value" : "少しずつ積み重なっています。続けるほど、ありがとうに気づく力も育っていきます。"
           }
         }
       }
@@ -546,7 +546,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "新しい習慣のコツをつかんできましたね!続けて、どこまで行けるか試してみましょう。"
+            "value" : "ありがとう日記がしっかり育ってきました。この調子で、これからのできごとも残していきましょう。"
           }
         }
       }
