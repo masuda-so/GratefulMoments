@@ -16,6 +16,9 @@ struct ContentView: View {
             Tab("Achievements", systemImage: "medal.fill") {
                 AchievementsView()
             }
+            Tab("Assistant", systemImage: "apple.intelligence") {
+                AssistantView()
+            }
         }
     }
 }
