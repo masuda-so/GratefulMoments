@@ -55,16 +55,16 @@ struct AchievementsView: View {
         .frame(maxWidth: .infinity)
     }
     
-    func header(_ text: String) -> some View {
-        Text(text)
+    func header(_ key: LocalizedStringKey) -> some View {
+        Text(key)
             .font(.subheadline.bold())
             .padding()
     }
-    
+
     /// - precondition: `unlockedBadges` must have a timestamp
     private var sortedUnlockedBadges: [Badge] {
         unlockedBadges.sorted {
-            ($0.timestamp!, $0.details.title) < ($1.timestamp!, $1.details.title)
+            ($0.timestamp!, $0.details.rawValue) < ($1.timestamp!, $1.details.rawValue)
         }
     }
     

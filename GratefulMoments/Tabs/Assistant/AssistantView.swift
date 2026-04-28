@@ -108,7 +108,7 @@ private struct AssistantChatView: View {
                 .foregroundStyle(.secondary)
             ForEach(SuggestionPrompt.all) { prompt in
                 Button {
-                    send(prompt.text)
+                    send(String(localized: prompt.text))
                 } label: {
                     HStack {
                         Image(systemName: prompt.icon)
@@ -146,14 +146,38 @@ private struct AssistantChatView: View {
 
     private func makeSession() -> LanguageModelSession {
         LanguageModelSession(instructions: """
+            LANGUAGE RULE (highest priority): Reply in the exact same language the user writes in. \
+            If the user writes in Japanese, reply in Japanese. If in English, reply in English. \
+            The user's preferred language code is "\(preferredLanguageCode)" — default to this if their message is ambiguous. \
+            Never switch to a different language than the user's, even if the system instructions are in English.
+
             You are a kind, supportive companion for someone keeping a gratitude journal.
             Help the user reflect on their grateful moments and offer warm, specific encouragement.
             Reference their entries when relevant, but do not invent moments they did not record.
-            Keep replies under four sentences unless the user asks for more.
+
+            Strict output rules:
+            - Reply briefly in 2-3 short paragraphs separated by a blank line. Each paragraph is 1-2 short sentences. Conversational and warm, like a kind friend.
+            - Do NOT use any Markdown formatting (no **bold**, no *italic*, no headings, no bullet/numbered lists).
+            - Reference at most 1-2 specific moments. When you mention them, naturally paraphrase the title in the user's reply language. \
+              Never insert raw foreign-language titles verbatim (e.g., for a Japanese reply, write 「自家栽培のトマト」 instead of "homegrown tomato"; \
+              translate proper nouns only when natural — keep personal names like "Blair" unchanged but inflect them naturally).
+            - Do NOT mention dates or numbers. Refer to moments by what they are, not when they happened.
+            - Each sentence and idea must appear only once. Never repeat or rephrase the same content.
+            - Produce exactly one reply, then stop. Do not continue after your closing sentence.
 
             Their recent grateful moments (oldest first, up to 20):
             \(momentsContext)
+
+            Final reminder: reply in the user's language ("\(preferredLanguageCode)" if ambiguous).
             """)
+    }
+
+    private var generationOptions: GenerationOptions {
+        GenerationOptions(maximumResponseTokens: 800)
+    }
+
+    private var preferredLanguageCode: String {
+        Locale.current.language.languageCode?.identifier ?? "en"
     }
 
     private var momentsContext: String {
@@ -192,7 +216,7 @@ private struct AssistantChatView: View {
         Task {
             defer { isResponding = false }
             do {
-                let stream = session.streamResponse(to: trimmed)
+                let stream = session.streamResponse(to: trimmed, options: generationOptions)
                 for try await partial in stream {
                     if let index = messages.firstIndex(where: { $0.id == assistantID }) {
                         messages[index].text = partial.content
@@ -200,7 +224,7 @@ private struct AssistantChatView: View {
                 }
             } catch {
                 if let index = messages.firstIndex(where: { $0.id == assistantID }) {
-                    messages[index].text = "Sorry — \(error.localizedDescription)"
+                    messages[index].text = String(localized: "Sorry — \(error.localizedDescription)")
                 }
             }
         }
@@ -226,7 +250,7 @@ private struct ChatBubble: View {
             if message.role == .user {
                 Spacer(minLength: 40)
             }
-            Text(message.text.isEmpty ? "…" : message.text)
+            renderedText
                 .padding(12)
                 .background(bubbleBackground, in: .rect(cornerRadius: 16))
                 .foregroundStyle(message.role == .user ? Color.white : .primary)
@@ -235,6 +259,22 @@ private struct ChatBubble: View {
                 Spacer(minLength: 40)
             }
         }
+    }
+
+    private var renderedText: Text {
+        let raw = message.text.isEmpty ? "…" : message.text
+        let bulletNormalized = raw.replacingOccurrences(
+            of: #"(?m)^([ \t]*)\*[ \t]+"#,
+            with: "$1• ",
+            options: .regularExpression
+        )
+        if let attributed = try? AttributedString(
+            markdown: bulletNormalized,
+            options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace)
+        ) {
+            return Text(attributed)
+        }
+        return Text(bulletNormalized)
     }
 
     private var bubbleBackground: Color {
@@ -246,7 +286,7 @@ private struct SuggestionPrompt: Identifiable {
     let id = UUID()
     let icon: String
     let tint: Color
-    let text: String
+    let text: LocalizedStringResource
 
     static let all: [SuggestionPrompt] = [
         SuggestionPrompt(

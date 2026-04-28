@@ -13,17 +13,28 @@ struct UnavailableView: View {
     let reason: SystemLanguageModel.Availability.UnavailableReason
 
     var body: some View {
-        let text = switch reason {
+        switch reason {
         case .appleIntelligenceNotEnabled:
-            "Apple Intelligence is not enabled. Please enable it in Settings."
+            ContentUnavailableView(
+                "Apple Intelligence is not enabled. Please enable it in Settings.",
+                systemImage: "apple.intelligence.badge.xmark"
+            )
         case .deviceNotEligible:
-            "This device is not eligible for Apple Intelligence. Please use a compatible device."
+            ContentUnavailableView(
+                "This device is not eligible for Apple Intelligence. Please use a compatible device.",
+                systemImage: "apple.intelligence.badge.xmark"
+            )
         case .modelNotReady:
-            "The language model is not ready."
+            ContentUnavailableView(
+                "The language model is not ready.",
+                systemImage: "apple.intelligence.badge.xmark"
+            )
         @unknown default:
-            "The language model is unavailable."
+            ContentUnavailableView(
+                "The language model is unavailable.",
+                systemImage: "apple.intelligence.badge.xmark"
+            )
         }
-        ContentUnavailableView(text, systemImage: "apple.intelligence.badge.xmark")
     }
 }
 
