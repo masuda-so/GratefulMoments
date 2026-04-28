@@ -1,60 +1,131 @@
 # GratefulMoments
 
-A starter SwiftUI gratitude journal app that captures small wins, notes, and optional photos. The codebase includes a SwiftData-backed model layer, a reusable `MomentEntryView`, and a basic app shell ready for UI flow expansion.
+A SwiftUI gratitude journal app that helps you capture daily moments of gratitude with notes and photos. Track your journaling streak, earn badges, and build a collection of positive memories.
 
-## What this project does
+![iOS](https://img.shields.io/badge/iOS-17%2B-blue)
+![Swift](https://img.shields.io/badge/Swift-5.9-orange)
+![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20macOS-lightgray)
 
-`GratefulMoments` provides the foundation for a personal gratitude journal app. It defines a persisted `Moment` model, sample data for previews, and an entry form for adding titled notes with optional images.
+## What the project does
 
-## Why this project is useful
+GratefulMoments is a personal gratitude journal app that lets you:
 
-- Builds a modern SwiftUI + SwiftData app scaffold.
-- Demonstrates local persistence with `ModelContainer` and `ModelContext`.
-- Includes a working moment entry screen with `PhotosPicker` support.
-- Separates concerns into `Models`, `Logic`, and UI tabs for easier extension.
+- **Capture moments** — Record gratitude entries with a title, note, and optional photo
+- **Track your streak** — Monitor consecutive days of journaling to build a consistent habit
+- **Earn badges** — Unlock achievements as you progress on your gratitude journey
+- **Browse history** — View your past moments in a visually appealing hexagonal layout
+
+## Why the project is useful
+
+- **Build positive habits** — Daily gratitude journaling has been linked to improved well-being
+- **Modern SwiftUI patterns** — Demonstrates `@Observable`, SwiftData, and environment injection
+- **Custom UI components** — Includes a unique hexagonal grid layout for displaying moments
+- **Badge motivation system** — Gamifies the journaling experience with unlockable achievements
 
 ## Key features
 
-- Captures gratitude moments with title, note, timestamp, and optional photo.
-- Saves entries locally using SwiftData.
-- Provides sample data in previews for fast UI development.
-- Uses `@Observable`, environment injection, and navigation tooling.
+| Feature | Description |
+|---------|-------------|
+| Moment capture | Create entries with title, note, and optional photo |
+| Photo support | Use `PhotosPicker` to attach images from your library |
+| SwiftData persistence | All moments stored locally using SwiftData |
+| Streak tracking | Calculate consecutive journaling days |
+| Badge system | Unlock achievements based on activity |
+| Hexagonal UI | Custom `HexagonLayout` for visual moment display |
+| Sample data | Pre-built sample moments for previews and testing |
+
+### Available Badges
+
+- **Start the Journey** — Log your first moment
+- **5 Stars** — Record five moments
+- **Shutterbug** — Add three entries with photos
+- **Expressive** — Add five moments with both photo and text
+- **Perfect 10** — Record at least 10 moments while collecting all other badges
 
 ## Getting started
 
 ### Requirements
 
-- Xcode 15 or later
-- iOS 17 or later SDK
+- **Xcode 15** or later
+- **iOS 17** or later SDK
+- **macOS 14** or later (for Mac support)
 
-### Open the project
+### Installation
 
-```bash
-cd /path/to/GratefulMoments
-open GratefulMoments.xcodeproj
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/GratefulMoments.git
+   cd GratefulMoments
+   ```
 
-### Run the app
+2. Open the project in Xcode:
+   ```bash
+   open GratefulMoments.xcodeproj
+   ```
 
-1. Open `GratefulMoments.xcodeproj` in Xcode.
-2. Select the `GratefulMoments` target.
-3. Choose a simulator or connected device.
-4. Build and run.
+3. Select a simulator (e.g., iPhone 15 Pro) and press **Cmd+R** to build and run.
 
 ### Usage
 
-The app currently includes the starter app shell and a moment entry screen component. Extend the UI to display saved moments, connect tabs, and wire navigation to `MomentEntryView`.
+1. **Add a moment** — Tap the `+` button in the Moments tab
+2. **Enter details** — Add a title, optional note, and optionally select a photo
+3. **Save** — Your moment is persisted automatically
+4. **View achievements** — Switch to the Achievements tab to see your streak and badges
 
 ## Project structure
 
-- `GratefulMoments/` – SwiftUI app source files
-- `GratefulMoments/Models/` – persisted data models
-- `GratefulMoments/Logic/` – data container and sample data loader
-- `GratefulMoments/Tabs/` – feature UI views and tab screens
-- `LICENSE` – project license
+```
+GratefulMoments/
+├── Custom Views/           # Reusable UI components
+│   ├── Hexagon.swift
+│   ├── HexagonAccessoryView.swift
+│   └── HexagonLayout.swift
+├── Logic/                  # Business logic
+│   ├── DataContainer.swift
+│   └── StreakCalculator.swift
+├── Models/                # Data models
+│   ├── Badge.swift
+│   ├── BadgeDetails.swift
+│   ├── BadgeManager.swift
+│   └── Moment.swift
+├── Tabs/                  # Main app tabs
+│   ├── Achievements/
+│   │   ├── AchievementsView.swift
+│   │   ├── BadgeDetailView.swift
+│   │   ├── LockedBadgeView.swift
+│   │   ├── StreakView.swift
+│   │   └── UnlockedBadgeView.swift
+│   └── Moments/
+│       ├── MomentDetailView.swift
+│       ├── MomentEntryView.swift
+│       ├── MomentHexagonView.swift
+│       └── MomentsView.swift
+├── Assets.xcassets/       # App assets
+├── ContentView.swift      # Main tab view
+└── GratefulMomentsApp.swift  # App entry point
+```
 
-## Help and contributions
+## Contributing
 
-This repository is open for contributions. If you want to improve the app, please open an issue or submit a pull request.
+Contributions are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for details on the process for submitting pull requests.
 
-For license details, see `LICENSE`.
+### Development setup
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+- **Issues** — Report bugs and request features via [GitHub Issues](https://github.com/yourusername/GratefulMoments/issues)
+- **Discussions** — Use GitHub Discussions for questions and general feedback
+
+---
+
+Built with ❤️ using SwiftUI and SwiftData
