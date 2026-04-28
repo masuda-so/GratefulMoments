@@ -15,9 +15,13 @@ struct MomentEntryView: View {
     @State private var imageData: Data?
     @State private var newImage: PhotosPickerItem?
     @State private var isShowingCancelConfirmation = false
+    @State private var paywallSource: PaywallSource?
+    
+    @Query private var moments: [Moment]
     
     @Environment(\.dismiss) private var dismiss
     @Environment(DataContainer.self) private var dataContainer
+    @Environment(PurchaseManager.self) private var purchaseManager
     
     var body: some View {
         NavigationStack {
@@ -44,23 +48,13 @@ struct MomentEntryView: View {
                 
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add", systemImage: "checkmark") {
-                        let newMoment = Moment(
-                            title: title,
-                            note: note,
-                            imageData: imageData,
-                            timestamp: .now
-                        )
-                        dataContainer.context.insert(newMoment)
-                        do {
-                            try dataContainer.badgeManager.unlockBadges(newMoment: newMoment)
-                            try dataContainer.context.save()
-                            dismiss()
-                        } catch {
-                            // Don't dismiss
-                        }
+                        saveMoment()
                     }
                     .disabled(title.isEmpty)
                 }
+            }
+            .sheet(item: $paywallSource) { source in
+                PaywallView(source: source)
             }
         }
     }
@@ -106,6 +100,28 @@ struct MomentEntryView: View {
             photoPicker
         }
         .padding()
+    }
+    
+    private func saveMoment() {
+        guard purchaseManager.hasPremium || moments.count < PurchaseManager.freeMomentLimit else {
+            paywallSource = .momentLimit
+            return
+        }
+        
+        let newMoment = Moment(
+            title: title,
+            note: note,
+            imageData: imageData,
+            timestamp: .now
+        )
+        dataContainer.context.insert(newMoment)
+        do {
+            try dataContainer.badgeManager.unlockBadges(newMoment: newMoment)
+            try dataContainer.context.save()
+            dismiss()
+        } catch {
+            // Don't dismiss
+        }
     }
 }
 

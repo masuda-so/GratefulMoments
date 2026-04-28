@@ -50,11 +50,13 @@ class DataContainer {
 }
 
 private let sampleContainer = DataContainer(includeSampleMoments: true)
+private let samplePurchaseManager = PurchaseManager.previewPremium
 
 extension View {
     func sampleDataContainer() -> some View {
         self
             .environment(sampleContainer)
+            .environment(samplePurchaseManager)
             .modelContainer(sampleContainer.modelContainer)
     }
 }
