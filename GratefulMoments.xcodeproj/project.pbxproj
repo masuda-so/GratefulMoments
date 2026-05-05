@@ -344,7 +344,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ether.llc.GratefulMoments;
+				PRODUCT_BUNDLE_IDENTIFIER = ether.llc.smallthanksdiary;
 				PRODUCT_NAME = "Grateful Moments Journal";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -378,7 +378,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ether.llc.GratefulMoments;
+				PRODUCT_BUNDLE_IDENTIFIER = ether.llc.smallthanksdiary;
 				PRODUCT_NAME = "Grateful Moments Journal";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
