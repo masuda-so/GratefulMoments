@@ -17,7 +17,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8A2A61202F9137CA00FB69C8 /* GratefulMoments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GratefulMoments.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A2A61202F9137CA00FB69C8 /* Grateful Moments Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grateful Moments Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADD3C322F9CE1BD00160060 /* GratefulMomentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GratefulMomentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -64,7 +64,7 @@
 		8A2A61212F9137CA00FB69C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8A2A61202F9137CA00FB69C8 /* GratefulMoments.app */,
+				8A2A61202F9137CA00FB69C8 /* Grateful Moments Journal.app */,
 				8ADD3C322F9CE1BD00160060 /* GratefulMomentsTests.xctest */,
 			);
 			name = Products;
@@ -92,7 +92,7 @@
 			packageProductDependencies = (
 			);
 			productName = GratefulMoments;
-			productReference = 8A2A61202F9137CA00FB69C8 /* GratefulMoments.app */;
+			productReference = 8A2A61202F9137CA00FB69C8 /* Grateful Moments Journal.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8ADD3C312F9CE1BD00160060 /* GratefulMomentsTests */ = {
@@ -345,7 +345,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ether.llc.GratefulMoments;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Grateful Moments Journal";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -379,7 +379,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ether.llc.GratefulMoments;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Grateful Moments Journal";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
