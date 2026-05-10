@@ -82,6 +82,8 @@ GratefulMoments/
 
 ## Where to Get Help
 
+- Support information: [Support](https://masuda-so.github.io/GratefulMoments/support/)
+- Privacy policy: [Privacy Policy](https://masuda-so.github.io/GratefulMoments/privacy/)
 - For questions or bug reports, open a [GitHub Issue](https://github.com/masuda-so/GratefulMoments/issues)
 
 ---

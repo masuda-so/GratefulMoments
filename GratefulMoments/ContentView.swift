@@ -19,6 +19,9 @@ struct ContentView: View {
             Tab("Assistant", systemImage: "apple.intelligence") {
                 AssistantView()
             }
+            Tab("Settings", systemImage: "gearshape.fill") {
+                SettingsView()
+            }
         }
     }
 }
