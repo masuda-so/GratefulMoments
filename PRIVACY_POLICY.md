@@ -2,7 +2,7 @@
 
 Effective date: May 7, 2026
 
-This Privacy Policy explains how Small Thanks Diary (GratefulMoments) handles your information.
+This Privacy Policy explains how Small Thanks Diary handles your information.
 
 ## Data Collection
 
@@ -28,6 +28,10 @@ Small Thanks Diary does not include third-party analytics, advertising SDKs, or 
 
 ## Contact
 
-If you have questions about this Privacy Policy, contact:
+If you have questions about this Privacy Policy or need app support, contact:
 
 so.masuda.2003@pm.me
+
+Support page:
+
+https://masuda-so.github.io/GratefulMoments/support/

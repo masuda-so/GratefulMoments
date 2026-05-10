@@ -10,8 +10,16 @@ import SwiftData
 
 @main
 struct GratefulMomentsApp: App {
-    @State private var dataContainer = DataContainer()
+    @State private var dataContainer = DataContainer(includeSampleMoments: Self.usesScreenshotSampleData)
     @State private var purchaseManager = PurchaseManager()
+
+    private static var usesScreenshotSampleData: Bool {
+        #if DEBUG
+        ProcessInfo.processInfo.environment["GRATEFUL_MOMENTS_SAMPLE_DATA"] == "1"
+        #else
+        false
+        #endif
+    }
     
     var body: some Scene {
         WindowGroup {

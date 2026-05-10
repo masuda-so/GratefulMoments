@@ -12,8 +12,8 @@ import StoreKit
 @MainActor
 @Observable
 final class PurchaseManager {
-    static let premiumMonthlyProductID: Product.ID = "gratefulmoments.premium.monthly"
-    static let premiumYearlyProductID: Product.ID = "gratefulmoments.premium.yearly"
+    static let premiumMonthlyProductID: Product.ID = "smallthanksdiary.premium.monthly"
+    static let premiumYearlyProductID: Product.ID = "smallthanksdiary.premium.yearly"
     static let premiumProductIDs: [Product.ID] = [
         premiumMonthlyProductID,
         premiumYearlyProductID
