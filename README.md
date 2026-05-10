@@ -82,6 +82,8 @@ GratefulMoments/
 
 ## ヘルプ・サポート
 
+- サポート情報: [Support](https://masuda-so.github.io/GratefulMoments/support/)
+- プライバシーポリシー: [Privacy Policy](https://masuda-so.github.io/GratefulMoments/privacy/)
 - 質問やバグ報告は [GitHub Issue](https://github.com/masuda-so/GratefulMoments/issues) へ
 
 ---
