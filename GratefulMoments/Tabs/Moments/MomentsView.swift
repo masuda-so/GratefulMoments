@@ -111,7 +111,7 @@ struct MomentsView: View {
             }
         }
     }
-    
+
     @ViewBuilder private var streakHeader: some View {
         let streak = StreakCalculator().calculateStreak(for: moments)
         if streak > 0 {
@@ -125,7 +125,7 @@ struct MomentsView: View {
             .padding()
         }
     }
-    
+
     private var isShowingExportError: Binding<Bool> {
         Binding {
             exportErrorMessage != nil

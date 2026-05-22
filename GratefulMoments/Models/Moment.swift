@@ -34,33 +34,47 @@ class Moment {
 }
 
 extension Moment {
-    static let sample = sampleData[0]
-    static let longTextSample = sampleData[1]
-    static let imageSample = sampleData[4]
+    static var sample: Moment { sampleData[0] }
+    static var longTextSample: Moment { sampleData[1] }
+    static var imageSample: Moment { sampleData[4] }
     
-    static let sampleData = [
-        Moment(
-            title: "初めてのトマト",
-            note: "ベランダで育てたトマトを収穫できた。小さいけれど、ちゃんと甘くてうれしい。"
-        ),
-        Moment(
-            title: "試験を乗り切った",
-            note: "化学の試験は難しかったけれど、友だちと一緒に勉強したおかげで落ち着いて解けた。",
-            imageData: UIImage(named: "Study")?.pngData()
-        ),
-        Moment(
-            title: "ゆっくり休めた夜",
-            note: "忙しい一週間のあと、何もしない時間を過ごせてほっとした。",
-            imageData: UIImage(named: "Relax")?.pngData()
-        ),
-        Moment(
-            title: "家族の時間",
-            note: ""
-        ),
-        Moment(
-            title: "ライブで元気をもらった",
-            note: "大好きな音楽を近くで聴けて、帰り道までずっと楽しい気持ちが続いた。",
-            imageData: UIImage(named: "Concert")?.pngData()
-        )
-    ]
+    static var sampleData: [Moment] {
+        [
+            Moment(
+                title: String(localized: "First Tomato", comment: "Sample moment title."),
+                note: String(
+                    localized: "I harvested tomatoes from the balcony. They were small, sweet, and made me smile.",
+                    comment: "Sample moment note."
+                )
+            ),
+            Moment(
+                title: String(localized: "Made it through the exam", comment: "Sample moment title."),
+                note: String(
+                    localized: "Chemistry was tough, but studying with friends helped me stay calm and do my best.",
+                    comment: "Sample moment note."
+                ),
+                imageData: UIImage(named: "Study")?.pngData()
+            ),
+            Moment(
+                title: String(localized: "A restful night", comment: "Sample moment title."),
+                note: String(
+                    localized: "After a busy week, it felt good to spend an evening doing absolutely nothing.",
+                    comment: "Sample moment note."
+                ),
+                imageData: UIImage(named: "Relax")?.pngData()
+            ),
+            Moment(
+                title: String(localized: "Family time", comment: "Sample moment title."),
+                note: ""
+            ),
+            Moment(
+                title: String(localized: "Lifted by live music", comment: "Sample moment title."),
+                note: String(
+                    localized: "Hearing my favorite songs up close kept me smiling the whole way home.",
+                    comment: "Sample moment note."
+                ),
+                imageData: UIImage(named: "Concert")?.pngData()
+            )
+        ]
+    }
 }
