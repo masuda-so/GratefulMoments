@@ -24,7 +24,7 @@
     }
 
     main {
-      width: min(860px, calc(100% - 32px));
+      width: min(1080px, calc(100% - 32px));
       margin: 0 auto;
       padding: 56px 0;
     }
@@ -60,6 +60,45 @@
       color: var(--muted);
     }
 
+    .screenshots {
+      margin: 34px 0 40px;
+    }
+
+    .screenshot-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .phone-shot {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(23, 32, 38, 0.12);
+      border-radius: 28px;
+      box-shadow: 0 18px 44px rgba(23, 32, 38, 0.16);
+      background: #fff;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .screen-meta {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -86,6 +125,26 @@
       color: var(--muted);
       font-size: 0.95rem;
     }
+
+    @media (max-width: 720px) {
+      main {
+        padding-top: 36px;
+      }
+
+      .screenshot-gallery {
+        display: flex;
+        gap: 14px;
+        margin-inline: -16px;
+        padding-inline: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+
+      figure {
+        flex: 0 0 min(74vw, 300px);
+        scroll-snap-align: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -95,6 +154,24 @@
       <h1>A private gratitude journal for small everyday moments.</h1>
       <p class="lede">Capture moments of gratitude with notes and photos, build a steady habit with streaks and badges, and keep your memories on your device.</p>
     </header>
+
+    <section class="screenshots" aria-label="App screenshots">
+      <div class="screenshot-gallery">
+        <figure>
+          <img class="phone-shot" src="./assets/screenshots/01-moments-iphone-17-pro-max.png" width="1320" height="2868" alt="Small Thanks Diary moments screen on iPhone 17 Pro Max">
+          <figcaption>Moments</figcaption>
+        </figure>
+        <figure>
+          <img class="phone-shot" src="./assets/screenshots/02-achievements-iphone-17-pro-max.png" width="1320" height="2868" alt="Small Thanks Diary achievements screen on iPhone 17 Pro Max">
+          <figcaption>Achievements</figcaption>
+        </figure>
+        <figure>
+          <img class="phone-shot" src="./assets/screenshots/03-entry-iphone-17-pro-max.png" width="1320" height="2868" alt="Small Thanks Diary entry screen on iPhone 17 Pro Max">
+          <figcaption>Entry</figcaption>
+        </figure>
+      </div>
+      <p class="screen-meta">Screenshots captured on iPhone 17 Pro Max with iOS 26.4.</p>
+    </section>
 
     <section class="grid" aria-label="App highlights">
       <article class="card">
@@ -121,6 +198,11 @@
         <h2>Privacy Policy</h2>
         <p>Learn how the app handles journal entries, photos, purchases, and exports.</p>
         <p><a href="./privacy/">Read privacy policy</a></p>
+      </article>
+      <article class="card">
+        <h2>Terms of Use</h2>
+        <p>This app uses Apple's standard end user license agreement.</p>
+        <p><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Read terms of use</a></p>
       </article>
     </section>
 

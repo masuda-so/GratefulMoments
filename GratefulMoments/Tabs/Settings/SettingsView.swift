@@ -8,22 +8,24 @@
 import SwiftUI
 
 struct SettingsView: View {
-    private let supportURL = URL(string: "https://masuda-so.github.io/GratefulMoments/support/")!
-    private let privacyPolicyURL = URL(string: "https://masuda-so.github.io/GratefulMoments/privacy/")!
-    private let supportEmailURL = URL(string: "mailto:so.masuda.2003@pm.me?subject=Small%20Thanks%20Diary%20Support")!
-
     var body: some View {
         NavigationStack {
             List {
                 Section("Support") {
-                    Link(destination: supportURL) {
+                    Link(destination: AppLinks.supportURL) {
                         Label("Help & Support", systemImage: "questionmark.circle")
                     }
-                    Link(destination: supportEmailURL) {
+                    Link(destination: AppLinks.supportEmailURL) {
                         Label("Email Support", systemImage: "envelope")
                     }
-                    Link(destination: privacyPolicyURL) {
+                }
+
+                Section("Legal") {
+                    Link(destination: AppLinks.privacyPolicyURL) {
                         Label("Privacy Policy", systemImage: "hand.raised")
+                    }
+                    Link(destination: AppLinks.termsOfUseURL) {
+                        Label("Terms of Use", systemImage: "doc.text")
                     }
                 }
 
