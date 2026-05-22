@@ -16,16 +16,16 @@
       "localizations" : [
         {
           "description" : "Unlock unlimited moments, reflection, and exports.",
-          "displayName" : "GratefulMoments Premium",
+          "displayName" : "Grateful Moments Journal Premium",
           "locale" : "en_US"
         },
         {
           "description" : "無制限の記録、ふりかえり、エクスポートを解放します。",
-          "displayName" : "GratefulMoments Premium",
+          "displayName" : "小さなありがとう日記 Premium",
           "locale" : "ja_JP"
         }
       ],
-      "name" : "GratefulMoments Premium",
+      "name" : "Grateful Moments Journal Premium",
       "subscriptions" : [
         {
           "adHocOffers" : [

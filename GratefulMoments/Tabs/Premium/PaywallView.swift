@@ -13,15 +13,15 @@ enum PaywallSource: String, Identifiable {
     case momentLimit
     case assistant
     case export
-    
+
     var id: String {
         rawValue
     }
-    
+
     var title: LocalizedStringResource {
         switch self {
         case .general:
-            return "GratefulMoments Premium"
+            return "Grateful Moments Journal Premium"
         case .momentLimit:
             return "Keep every grateful moment"
         case .assistant:
@@ -30,7 +30,7 @@ enum PaywallSource: String, Identifiable {
             return "Save your memories outside the app"
         }
     }
-    
+
     var message: LocalizedStringResource {
         switch self {
         case .general:
@@ -48,10 +48,10 @@ enum PaywallSource: String, Identifiable {
 struct PaywallView: View {
     let source: PaywallSource
     var isPresentedModally = true
-    
+
     @Environment(PurchaseManager.self) private var purchaseManager
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
         if isPresentedModally {
             NavigationStack {
@@ -61,18 +61,24 @@ struct PaywallView: View {
             storeContent
         }
     }
-    
+
     private var storeContent: some View {
-        SubscriptionStoreView(productIDs: PurchaseManager.premiumProductIDs) {
-            PaywallMarketingContent(source: source)
-        }
-        .subscriptionStoreButtonLabel(.multiline)
-        .storeButton(.visible, for: .restorePurchases)
-        .onInAppPurchaseCompletion { _, _ in
-            await purchaseManager.refreshEntitlements()
-            if purchaseManager.hasPremium {
-                dismiss()
+        Group {
+            switch purchaseManager.premiumProductsState {
+            case .idle, .loading:
+                PremiumProductsLoadingView(source: source)
+            case .loaded(let products):
+                subscriptionStore(products: products)
+            case .unavailable(let message, let storefront, let expectedProductIDs):
+                PremiumProductsUnavailableView(
+                    message: message,
+                    storefront: storefront,
+                    expectedProductIDs: expectedProductIDs
+                )
             }
+        }
+        .task {
+            await purchaseManager.loadPremiumProducts()
         }
         .onChange(of: purchaseManager.hasPremium) {
             if purchaseManager.hasPremium {
@@ -89,11 +95,90 @@ struct PaywallView: View {
             }
         }
     }
+
+    private func subscriptionStore(products: [Product]) -> some View {
+        SubscriptionStoreView(subscriptions: products) {
+            PaywallMarketingContent(source: source)
+        }
+        .subscriptionStoreButtonLabel(.multiline)
+        .storeButton(.visible, for: .restorePurchases, .policies)
+        .subscriptionStorePolicyDestination(url: AppLinks.privacyPolicyURL, for: .privacyPolicy)
+        .subscriptionStorePolicyDestination(url: AppLinks.termsOfUseURL, for: .termsOfService)
+        .onInAppPurchaseCompletion { _, _ in
+            await purchaseManager.refreshEntitlements()
+            if purchaseManager.hasPremium {
+                dismiss()
+            }
+        }
+    }
+}
+
+private struct PremiumProductsLoadingView: View {
+    let source: PaywallSource
+
+    var body: some View {
+        VStack(spacing: 28) {
+            PaywallMarketingContent(source: source)
+            ProgressView("Loading Premium options...")
+                .controlSize(.large)
+                .frame(maxWidth: .infinity)
+        }
+        .padding(.vertical, 32)
+    }
+}
+
+private struct PremiumProductsUnavailableView: View {
+    let message: String
+    let storefront: String?
+    let expectedProductIDs: [Product.ID]
+
+    @Environment(PurchaseManager.self) private var purchaseManager
+
+    var body: some View {
+        ContentUnavailableView {
+            Label("Premium Unavailable", systemImage: "cart.badge.questionmark")
+        } description: {
+            VStack(spacing: 12) {
+                Text("Premium options could not be loaded from the App Store. Please try again.")
+                diagnostics
+            }
+        } actions: {
+            VStack(spacing: 12) {
+                Button("Retry") {
+                    Task {
+                        await purchaseManager.loadPremiumProducts(forceReload: true)
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+
+                Button("Restore Purchases") {
+                    Task {
+                        await purchaseManager.restorePurchases()
+                    }
+                }
+                .buttonStyle(.bordered)
+            }
+        }
+    }
+
+    private var diagnostics: some View {
+        VStack(spacing: 6) {
+            if let storefront {
+                Text(verbatim: "Storefront: \(storefront)")
+            }
+            Text(verbatim: "Expected: \(expectedProductIDs.joined(separator: ", "))")
+            Text(verbatim: message)
+        }
+        .font(.footnote)
+        .foregroundStyle(.secondary)
+        .multilineTextAlignment(.center)
+        .textSelection(.enabled)
+    }
 }
 
 private struct PaywallMarketingContent: View {
     let source: PaywallSource
-    
+
     private var features: [PremiumFeature] {
         var features: [PremiumFeature] = [
             .unlimitedMoments,
@@ -104,7 +189,7 @@ private struct PaywallMarketingContent: View {
         }
         return features
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
             header
@@ -115,7 +200,7 @@ private struct PaywallMarketingContent: View {
         .padding(.horizontal)
         .padding(.top, 32)
     }
-    
+
     private var header: some View {
         VStack(alignment: .leading, spacing: 12) {
             Image(systemName: "sparkles")
@@ -128,7 +213,7 @@ private struct PaywallMarketingContent: View {
                 .foregroundStyle(.secondary)
         }
     }
-    
+
     private var featureList: some View {
         VStack(alignment: .leading, spacing: 16) {
             ForEach(features) { feature in
@@ -137,7 +222,7 @@ private struct PaywallMarketingContent: View {
         }
         .padding(.vertical, 8)
     }
-    
+
     private var footnote: some View {
         Text("No ads. Your moments stay local on this device unless you choose to export them.")
             .font(.footnote)
@@ -147,7 +232,7 @@ private struct PaywallMarketingContent: View {
 
 private struct PremiumFeatureRow: View {
     let feature: PremiumFeature
-    
+
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: feature.icon)
@@ -171,7 +256,7 @@ private struct PremiumFeature: Identifiable {
     let tint: Color
     let title: LocalizedStringResource
     let message: LocalizedStringResource
-    
+
     static let unlimitedMoments = PremiumFeature(
         id: "unlimitedMoments",
         icon: "infinity",
@@ -179,7 +264,7 @@ private struct PremiumFeature: Identifiable {
         title: "Unlimited moments",
         message: "Keep adding grateful moments after the free 30-entry starter space."
     )
-    
+
     static let assistant = PremiumFeature(
         id: "assistant",
         icon: "apple.intelligence",
@@ -187,7 +272,7 @@ private struct PremiumFeature: Identifiable {
         title: "Reflection assistant",
         message: "Chat privately about your saved entries on Apple Intelligence-capable devices."
     )
-    
+
     static let exports = PremiumFeature(
         id: "exports",
         icon: "square.and.arrow.up",
