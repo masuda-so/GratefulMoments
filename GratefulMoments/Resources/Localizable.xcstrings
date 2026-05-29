@@ -628,6 +628,26 @@
         }
       }
     },
+    "Photo could not be added. Please choose another photo." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真を追加できませんでした。別の写真を選んでください。"
+          }
+        }
+      }
+    },
+    "Photo Unavailable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真を追加できません"
+          }
+        }
+      }
+    },
     "Premium Unavailable" : {
       "localizations" : {
         "ja" : {
@@ -644,6 +664,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プレミアムではPDFとCSVへの書き出しが使えるようになり、ありがとう日記を持ち出しやすくなります。"
+          }
+        }
+      }
+    },
+    "Premium unlocks the reflection assistant on supported Apple Intelligence devices." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プレミアムでは、対応する Apple Intelligence デバイスで振り返りアシスタントが使えるようになります。"
           }
         }
       }
@@ -668,6 +698,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "アプリの外でも、ありがとう日記を保存したり分析したりできます。"
+          }
+        }
+      }
+    },
+    "Purchase options could not be loaded. Please wait a moment and try again." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入オプションを読み込めませんでした。時間をおいて再試行してください。"
           }
         }
       }
@@ -746,6 +786,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "再試行"
+          }
+        }
+      }
+    },
+    "Save Failed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存に失敗しました"
           }
         }
       }
@@ -938,6 +988,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "私のありがとう日記には、どんな傾向がありますか？"
+          }
+        }
+      }
+    },
+    "Your moment could not be saved. Please try again." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "できごとを保存できませんでした。もう一度お試しください。"
           }
         }
       }

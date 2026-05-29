@@ -44,4 +44,22 @@ struct StreakCalculatorTests {
         #expect(streak == input.expectedStreak, "\(input.days)")
     }
 
+    @MainActor
+    @Test("Premium store can be shown with any approved subscription")
+    func premiumStoreCanLoadPartialProducts() {
+        #expect(PurchaseManager.canDisplayPremiumProducts(loadedProductIDs: [
+            PurchaseManager.premiumMonthlyProductID
+        ]))
+        #expect(PurchaseManager.canDisplayPremiumProducts(loadedProductIDs: [
+            PurchaseManager.premiumYearlyProductID
+        ]))
+        #expect(!PurchaseManager.canDisplayPremiumProducts(loadedProductIDs: []))
+
+        #expect(PurchaseManager.missingPremiumProductIDs(loadedProductIDs: [
+            PurchaseManager.premiumMonthlyProductID
+        ]) == [
+            PurchaseManager.premiumYearlyProductID
+        ])
+    }
+
 }

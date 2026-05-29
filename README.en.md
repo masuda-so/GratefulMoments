@@ -53,6 +53,12 @@
 2. Open `GratefulMoments.xcodeproj` in Xcode
 3. Select a simulator or device, then press **Cmd+R** to build and run
 
+### Premium / StoreKit Testing
+
+- The shared `GratefulMoments` scheme is configured with `GratefulMoments.storekit`. Run that scheme from Xcode with **Cmd+R** to verify the Premium screen against the local StoreKit catalog.
+- Direct `xcodebuild` or `simctl` launches do not attach the Xcode Run action's local StoreKit configuration, so they may show Sandbox/App Store Connect product state instead.
+- Production builds on real devices can only load products that are approved and available in App Store Connect.
+
 ### Usage
 
 1. Tap the `+` button in the Moments tab to create a new entry

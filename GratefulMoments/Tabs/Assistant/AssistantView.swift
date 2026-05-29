@@ -25,10 +25,8 @@ struct AssistantView: View {
         if #available(iOS 26, *) {
             if purchaseManager.hasPremium {
                 AssistantChatView()
-            } else if AssistantFeatureAvailability.canUseAssistant {
-                PaywallView(source: .assistant, isPresentedModally: false)
             } else {
-                UnavailableView(reason: SystemLanguageModel.default.availability.unavailableReason)
+                PaywallView(source: .assistant, isPresentedModally: false)
             }
         } else {
             ContentUnavailableView {

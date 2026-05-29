@@ -38,7 +38,7 @@ enum PaywallSource: String, Identifiable {
         case .momentLimit:
             return "The first 30 moments are free. Upgrade to Premium to keep adding moments without limits."
         case .assistant:
-            return "Premium unlocks the reflection assistant for warm, private conversations about your saved moments."
+            return "Premium unlocks the reflection assistant on supported Apple Intelligence devices."
         case .export:
             return "Premium unlocks PDF and CSV exports so your gratitude journal stays portable."
         }
@@ -133,14 +133,17 @@ private struct PremiumProductsUnavailableView: View {
     let expectedProductIDs: [Product.ID]
 
     @Environment(PurchaseManager.self) private var purchaseManager
+    @Environment(\.openURL) private var openURL
 
     var body: some View {
         ContentUnavailableView {
             Label("Premium Unavailable", systemImage: "cart.badge.questionmark")
         } description: {
             VStack(spacing: 12) {
-                Text("Premium options could not be loaded from the App Store. Please try again.")
+                Text("Purchase options could not be loaded. Please wait a moment and try again.")
+#if DEBUG
                 diagnostics
+#endif
             }
         } actions: {
             VStack(spacing: 12) {
@@ -155,6 +158,11 @@ private struct PremiumProductsUnavailableView: View {
                     Task {
                         await purchaseManager.restorePurchases()
                     }
+                }
+                .buttonStyle(.bordered)
+
+                Button("Support") {
+                    openURL(AppLinks.supportURL)
                 }
                 .buttonStyle(.bordered)
             }
