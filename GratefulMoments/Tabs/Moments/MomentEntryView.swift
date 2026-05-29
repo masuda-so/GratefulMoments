@@ -8,6 +8,7 @@
 import SwiftUI
 import PhotosUI
 import SwiftData
+import UIKit
 
 struct MomentEntryView: View {
     @State private var title = ""
@@ -16,6 +17,7 @@ struct MomentEntryView: View {
     @State private var newImage: PhotosPickerItem?
     @State private var isShowingCancelConfirmation = false
     @State private var paywallSource: PaywallSource?
+    @State private var entryAlert: EntryAlert?
     
     @Query private var moments: [Moment]
     
@@ -56,6 +58,13 @@ struct MomentEntryView: View {
             .sheet(item: $paywallSource) { source in
                 PaywallView(source: source)
             }
+            .alert(item: $entryAlert) { alert in
+                Alert(
+                    title: Text(alert.title),
+                    message: Text(alert.message),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
     
@@ -78,9 +87,7 @@ struct MomentEntryView: View {
         }
         .onChange(of: newImage) {
             guard let newImage else { return }
-            Task {
-                imageData = try await newImage.loadTransferable(type: Data.self)
-            }
+            loadPhoto(newImage)
         }
     }
     
@@ -120,8 +127,86 @@ struct MomentEntryView: View {
             try dataContainer.context.save()
             dismiss()
         } catch {
-            // Don't dismiss
+            dataContainer.context.rollback()
+            entryAlert = EntryAlert(
+                title: "Save Failed",
+                message: "Your moment could not be saved. Please try again."
+            )
         }
+    }
+
+    private func loadPhoto(_ item: PhotosPickerItem) {
+        Task {
+            do {
+                guard let selectedImageData = try await item.loadTransferable(type: Data.self) else {
+                    return
+                }
+                imageData = try Self.preparedImageData(from: selectedImageData)
+            } catch {
+                entryAlert = EntryAlert(
+                    title: "Photo Unavailable",
+                    message: "Photo could not be added. Please choose another photo."
+                )
+            }
+        }
+    }
+
+    private static func preparedImageData(from data: Data) throws -> Data {
+        guard let image = UIImage(data: data) else {
+            throw PhotoPreparationError.invalidImage
+        }
+
+        let preparedImage = image.resizedToFit(maxDimension: 1600)
+        guard let jpegData = preparedImage.jpegData(compressionQuality: 0.82) else {
+            throw PhotoPreparationError.compressionFailed
+        }
+
+        return jpegData
+    }
+}
+
+private struct EntryAlert: Identifiable {
+    let id = UUID()
+    let title: LocalizedStringResource
+    let message: LocalizedStringResource
+}
+
+private enum PhotoPreparationError: Error {
+    case invalidImage
+    case compressionFailed
+}
+
+private extension UIImage {
+    func resizedToFit(maxDimension: CGFloat) -> UIImage {
+        let longestSide = max(size.width, size.height)
+        guard longestSide > maxDimension else {
+            return normalizedForStorage()
+        }
+
+        let scale = maxDimension / longestSide
+        let targetSize = CGSize(width: size.width * scale, height: size.height * scale)
+        let renderer = UIGraphicsImageRenderer(size: targetSize, format: .storageImageFormat)
+
+        return renderer.image { _ in
+            draw(in: CGRect(origin: .zero, size: targetSize))
+        }
+    }
+
+    func normalizedForStorage() -> UIImage {
+        guard imageOrientation != .up else { return self }
+
+        let renderer = UIGraphicsImageRenderer(size: size, format: .storageImageFormat)
+        return renderer.image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
+        }
+    }
+}
+
+private extension UIGraphicsImageRendererFormat {
+    static var storageImageFormat: UIGraphicsImageRendererFormat {
+        let format = UIGraphicsImageRendererFormat.default()
+        format.scale = 1
+        return format
     }
 }
 

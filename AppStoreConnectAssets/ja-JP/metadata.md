@@ -46,19 +46,21 @@
 
 ## What's New
 
-初回リリース。
+Premium 購入の信頼性を改善しました。
 
 ## Review Notes
 
 小さなありがとう日記は、端末内に保存するプライベートな感謝日記アプリです。無料ユーザーは 30 件まで記録でき、Premium では記録件数の制限解除、PDF/CSV 書き出し、対応デバイスでの Assistant ふりかえり機能を利用できます。
 
 In-App Purchase entry points:
-- 30 件の無料枠に達した後の追加ボタン
-- Apple Intelligence が利用可能な環境での Assistant タブ
+- 購入前の Assistant タブ
 - Moments タブの書き出しボタン
+- 30 件の無料枠に達した後の追加ボタン
 
 Premium subscription product IDs:
 - smallthanksdiary.premium.monthly
 - smallthanksdiary.premium.yearly
 
 このビルドでは Settings に Privacy Policy と Terms of Use へのリンクを表示し、Premium 画面にも StoreKit のポリシーリンクを表示しています。
+
+初回 auto-renewable subscriptions 2 件を app version 1.0.1 (4) と一緒に審査してください。

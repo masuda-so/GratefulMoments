@@ -53,6 +53,12 @@
 2. Xcode で `GratefulMoments.xcodeproj` を開く
 3. シミュレーターや実機を選択し、**Cmd+R** でビルドして実行
 
+### Premium / StoreKit テスト
+
+- 共有scheme `GratefulMoments` には `GratefulMoments.storekit` を設定しています。Xcodeからこのschemeを **Cmd+R** で実行すると、ローカルStoreKitの商品カタログでPremium画面を確認できます。
+- `xcodebuild` や `simctl` で直接起動した場合は、XcodeのRun actionに紐付くローカルStoreKit設定が使われず、Sandbox/App Store Connect側の商品状態を見ることがあります。
+- 実機の本番アプリは、App Store Connectで承認・配信されている商品だけを読み込めます。
+
 ### 使い方
 
 1. 日記タブの `+` ボタンで新しいできごとを作成
