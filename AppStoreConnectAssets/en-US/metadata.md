@@ -46,12 +46,19 @@ gratitude,journal,diary,photo diary,habit,streak,badges,self care,reflection,min
 
 ## What's New
 
-Initial release.
+Premium purchase reliability improvements.
 
 ## Review Notes
 
-This app is a private gratitude journal. Users can save moments with a title, note, and optional photo, view streaks and achievement badges, export entries to PDF or CSV, and use the Assistant on supported Apple Intelligence devices.
+This app is a private gratitude journal. Free users can create up to 30 moments and can keep viewing or deleting their existing moments after that limit. Premium unlocks unlimited moment creation, PDF/CSV export, and the Assistant reflection feature on supported Apple Intelligence devices.
+
+In-App Purchase entry points:
+- Assistant tab before purchase
+- export button in the Moments tab
+- add button after the free 30-moment limit is reached
 
 Premium subscription product IDs:
 - smallthanksdiary.premium.monthly
 - smallthanksdiary.premium.yearly
+
+Please review these first auto-renewable subscriptions with app version 1.0.1 (4). The Premium screen includes Privacy Policy and Terms of Use links.

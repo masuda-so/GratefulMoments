@@ -90,12 +90,12 @@ final class PurchaseManager {
         do {
             let products = try await Product.products(for: Self.premiumProductIDs)
             let orderedProducts = Self.orderedPremiumProducts(from: products)
-            let loadedProductIDs = Set(orderedProducts.map(\.id))
-            let missingProductIDs = Self.premiumProductIDs.filter { !loadedProductIDs.contains($0) }
+            let loadedProductIDs = orderedProducts.map(\.id)
+            let missingProductIDs = Self.missingPremiumProductIDs(loadedProductIDs: loadedProductIDs)
 
-            guard missingProductIDs.isEmpty else {
+            guard Self.canDisplayPremiumProducts(loadedProductIDs: loadedProductIDs) else {
                 let message = Self.productLoadDiagnostic(
-                    loadedProductIDs: orderedProducts.map(\.id),
+                    loadedProductIDs: loadedProductIDs,
                     missingProductIDs: missingProductIDs
                 )
                 premiumProductsState = .unavailable(
@@ -157,6 +157,15 @@ final class PurchaseManager {
             let secondIndex = premiumProductIDs.firstIndex(of: second.id) ?? premiumProductIDs.endIndex
             return firstIndex < secondIndex
         }
+    }
+
+    static func canDisplayPremiumProducts(loadedProductIDs: [Product.ID]) -> Bool {
+        !loadedProductIDs.isEmpty
+    }
+
+    static func missingPremiumProductIDs(loadedProductIDs: [Product.ID]) -> [Product.ID] {
+        let loadedProductIDSet = Set(loadedProductIDs)
+        return premiumProductIDs.filter { !loadedProductIDSet.contains($0) }
     }
 
     private static func storefrontSummary(from storefront: Storefront?) -> String? {
