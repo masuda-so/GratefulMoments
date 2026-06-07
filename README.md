@@ -1,18 +1,16 @@
 # GratefulMoments
 
-[English](./README.en.md) | 日本語
+[English README](./README.en.md) | 日本語
 
 ---
 
-## プロジェクト概要
+## アプリについて
 
-**GratefulMoments** は、日々の「ありがとう」を日記のように残し、前向きな習慣を育てる SwiftUI 製の個人用アプリです。タイトル、メモ、写真付きでうれしかったできごとを書き留め、連続記録日数やバッジ獲得でモチベーションを維持できます。
+**GratefulMoments** は、SwiftUI と SwiftData で作られたプライベートな感謝日記アプリです。タイトル、メモ、写真で日々の「ありがとう」を記録し、連続記録日数やバッジ獲得で、ふりかえり習慣をゆるやかに育てられます。
 
 ![iOS](https://img.shields.io/badge/iOS-18.6%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-SwiftUI%20%7C%20SwiftData-orange)
-![プラットフォーム](https://img.shields.io/badge/Platform-iOS-lightgray)
-
----
+![Platform](https://img.shields.io/badge/Platform-iOS-lightgray)
 
 ## 主な機能
 
@@ -21,9 +19,11 @@
 - **六角形UI**: カスタム `HexagonLayout` による視覚的なできごと表示
 - **連続記録日数**: 毎日の記録習慣をストリークとして可視化
 - **バッジシステム**: 達成条件に応じてバッジをアンロック
-- **ふりかえり**: iOS 26 以降と Apple Intelligence 対応環境で、書いたできごとをもとにチャットを利用
+- **Assistant**: iOS 26 以降と Apple Intelligence 対応環境で、書いたできごとをもとにチャットでふりかえる
 - **SwiftData永続化**: できごととバッジをローカルに保存
 - **サンプルデータ**: プレビューやテスト用のできごとを用意
+- **Premiumサブスクリプション**: StoreKit による月額/年額プラン
+- **PDF/CSVエクスポート**: Premium で日記を外部に書き出し
 
 ### 利用可能なバッジ
 
@@ -33,15 +33,13 @@
 - **ことばと写真**: 写真とことばのあるできごとを5つ残す
 - **10のありがとう**: 他のすべてのバッジを集め、10件以上のできごとを残す
 
----
-
 ## 始め方
 
 ### 必要環境
 
 - iOS 26 SDK を含む Xcode
 - アプリのデプロイメントターゲット: iOS 18.6 以降
-- ふりかえり機能: iOS 26 以降、Apple Intelligence 対応デバイス、Apple Intelligence の有効化
+- Assistant 機能: iOS 26 以降、Apple Intelligence 対応デバイス、Apple Intelligence の有効化
 
 ### インストール手順
 
@@ -55,52 +53,53 @@
 
 ### Premium / StoreKit テスト
 
-- 共有scheme `GratefulMoments` には `GratefulMoments.storekit` を設定しています。Xcodeからこのschemeを **Cmd+R** で実行すると、ローカルStoreKitの商品カタログでPremium画面を確認できます。
-- `xcodebuild` や `simctl` で直接起動した場合は、XcodeのRun actionに紐付くローカルStoreKit設定が使われず、Sandbox/App Store Connect側の商品状態を見ることがあります。
-- 実機の本番アプリは、App Store Connectで承認・配信されている商品だけを読み込めます。
+- 共有 scheme `GratefulMoments` には `GratefulMoments.storekit` を設定しています。Xcode からこの scheme を **Cmd+R** で実行すると、ローカル StoreKit の商品カタログで Premium 画面を確認できます。
+- `xcodebuild` や `simctl` で直接起動した場合は、Xcode の Run action に紐付くローカル StoreKit 設定が使われず、Sandbox/App Store Connect 側の商品状態を見ることがあります。
+- 実機の本番アプリは、App Store Connect で承認・配信されている商品だけを読み込めます。
 
-### 使い方
+## 使い方
 
-1. 日記タブの `+` ボタンで新しいできごとを作成
+1. Moments タブの `+` ボタンで新しいできごとを作成
 2. タイトル、メモ、写真を入力して保存
-3. 達成タブで連続記録日数やバッジを確認
-4. 対応環境ではふりかえりタブで日記を振り返る
-
----
+3. Achievements タブで連続記録日数やバッジを確認
+4. 対応環境では Assistant タブで日記を振り返る
+5. 無料 30 件の制限後は Premium 画面から制限解除やエクスポートを利用
 
 ## プロジェクト構成
 
-```text
+```
 GratefulMoments/
-├── Custom Views/            # 再利用UIコンポーネント
-├── Logic/                   # データコンテナ、ストリーク計算
-├── Models/                  # Moment、Badge、バッジ管理
-├── Tabs/
-│   ├── Achievements/        # 達成・バッジ画面
-│   ├── Assistant/           # Apple Intelligenceベースのふりかえりチャット
-│   └── Moments/             # できごと一覧、入力、詳細
-├── Resources/               # アセット、色、ローカライズ
-├── ContentView.swift        # メインタブビュー
-└── GratefulMomentsApp.swift # アプリエントリーポイント
+├── GratefulMoments/
+│   ├── Custom Views/         # 再利用 UI コンポーネント
+│   ├── Logic/                # データコンテナ、ストリーク計算、StoreKit
+│   ├── Models/               # Moment、Badge、バッジ管理
+│   ├── Resources/            # アセット、色、ローカライズ
+│   ├── Tabs/
+│   │   ├── Achievements/     # 達成・バッジ画面
+│   │   ├── Assistant/        # Apple Intelligence ふりかえりチャット
+│   │   ├── Moments/          # できごと一覧、入力、詳細
+│   │   ├── Premium/          # StoreKit ペイウォールとマーケティング
+│   │   └── Settings/         # 設定と法務リンク
+│   ├── ContentView.swift     # メインタブビュー
+│   └── GratefulMomentsApp.swift # アプリエントリーポイント
+├── StreakCalculatorTests/    # ユニットテスト
+├── Scripts/                  # ビルド・スクリーンショット自動化
+└── docs/                     # GitHub Pages ドキュメント
 ```
 
----
-
-## ヘルプ・サポート
+## サポート・ヘルプ
 
 - サポート情報: [Support](https://masuda-so.github.io/GratefulMoments/support/)
 - プライバシーポリシー: [Privacy Policy](https://masuda-so.github.io/GratefulMoments/privacy/)
 - 質問やバグ報告は [GitHub Issue](https://github.com/masuda-so/GratefulMoments/issues) へ
-
----
+- メール: so.masuda.2003@pm.me
 
 ## ライセンス
 
 このプロジェクトは Apache License 2.0 の下で公開されています。詳細は [LICENSE](./LICENSE) を参照してください。
 
----
-
 ## メンテナー・コントリビューション
 
-- 増田創 (Soh Masuda) - オリジナル開発者
-- コントリビューション歓迎です。コントリビューションガイドは準備中です。
+- **増田創 (Soh Masuda)** - オリジナル開発者
+
+コントリビューション歓迎です。コントリビューションガイドは準備中です。
