@@ -63,3 +63,6 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 
 /.claude
+
+# GitHub Pages site lives in its own repository (masuda-so/GratefulMoments-pages)
+/AppStoreConnectAssets/GitHubPages/
