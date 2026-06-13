@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct MomentsView: View {
-    @State private var showCreateMoment = false
+    @State private var momentDraft: MomentDraft?
     @State private var paywallSource: PaywallSource?
     @State private var isShowingExportOptions = false
     @State private var exportedFile: ExportedMomentFile?
@@ -19,6 +19,7 @@ struct MomentsView: View {
     @Query(sort: \Moment.timestamp)
     private var moments: [Moment]
     @Environment(PurchaseManager.self) private var purchaseManager
+    @Environment(AppIntentRouter.self) private var appIntentRouter
     
     static let offsetAmount: CGFloat = 70.0
     
@@ -59,8 +60,8 @@ struct MomentsView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showCreateMoment) {
-                MomentEntryView()
+            .sheet(item: $momentDraft) { draft in
+                MomentEntryView(draft: draft)
             }
             .sheet(item: $paywallSource) { source in
                 PaywallView(source: source)
@@ -88,6 +89,12 @@ struct MomentsView: View {
             .defaultScrollAnchor(.bottom, for: .sizeChanges)
             .defaultScrollAnchor(.top, for: .alignment)
             .navigationTitle("Grateful Moments")
+            .onAppear {
+                handlePendingIntentRequest()
+            }
+            .onChange(of: appIntentRouter.pendingRequest) {
+                handlePendingIntentRequest()
+            }
         }
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
     }
@@ -138,9 +145,22 @@ struct MomentsView: View {
     
     private func handleCreateMoment() {
         if purchaseManager.hasPremium || moments.count < PurchaseManager.freeMomentLimit {
-            showCreateMoment = true
+            momentDraft = .empty
         } else {
             paywallSource = .momentLimit
+        }
+    }
+
+    private func handlePendingIntentRequest() {
+        guard let request = appIntentRouter.pendingRequest else { return }
+        switch request.destination {
+        case .newMoment(let draft):
+            if purchaseManager.hasPremium || moments.count < PurchaseManager.freeMomentLimit {
+                momentDraft = draft
+            } else {
+                paywallSource = .momentLimit
+            }
+            appIntentRouter.consume(request)
         }
     }
     

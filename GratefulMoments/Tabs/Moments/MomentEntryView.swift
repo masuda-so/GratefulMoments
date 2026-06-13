@@ -24,6 +24,11 @@ struct MomentEntryView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(DataContainer.self) private var dataContainer
     @Environment(PurchaseManager.self) private var purchaseManager
+
+    init(draft: MomentDraft = .empty) {
+        _title = State(initialValue: draft.title)
+        _note = State(initialValue: draft.note)
+    }
     
     var body: some View {
         NavigationStack {
@@ -213,4 +218,14 @@ private extension UIGraphicsImageRendererFormat {
 #Preview {
     MomentEntryView()
         .sampleDataContainer()
+}
+
+#Preview("With Draft") {
+    MomentEntryView(
+        draft: MomentDraft(
+            title: "Morning coffee",
+            note: "A quiet start before work."
+        )
+    )
+    .sampleDataContainer()
 }

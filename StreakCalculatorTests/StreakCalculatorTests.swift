@@ -62,4 +62,40 @@ struct StreakCalculatorTests {
         ])
     }
 
+    @Test("Moment drafts trim Siri and Shortcuts input")
+    func momentDraftTrimsInput() {
+        let draft = MomentDraft(
+            title: "  Fresh tomatoes  ",
+            note: "\nThankful for lunch.  "
+        )
+
+        #expect(draft.title == "Fresh tomatoes")
+        #expect(draft.note == "Thankful for lunch.")
+    }
+
+    @MainActor
+    @Test("App intent router prepares a new moment draft")
+    func appIntentRouterPreparesNewMomentDraft() {
+        let router = AppIntentRouter.shared
+        if let request = router.pendingRequest {
+            router.consume(request)
+        }
+
+        router.openMomentDraft(title: "  Evening walk  ", note: "  Cool air.  ")
+
+        guard let request = router.pendingRequest else {
+            Issue.record("Expected a pending app intent request.")
+            return
+        }
+
+        switch request.destination {
+        case .newMoment(let draft):
+            #expect(draft.title == "Evening walk")
+            #expect(draft.note == "Cool air.")
+        }
+
+        router.consume(request)
+        #expect(router.pendingRequest == nil)
+    }
+
 }
