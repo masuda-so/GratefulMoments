@@ -1,105 +1,107 @@
 # GratefulMoments
 
-[English README](./README.en.md) | 日本語
+[日本語版](README.ja.md)
+
+English Documentation | [English README](./README.en.md)
 
 ---
 
-## アプリについて
+## About
 
-**GratefulMoments** は、SwiftUI と SwiftData で作られたプライベートな感謝日記アプリです。タイトル、メモ、写真で日々の「ありがとう」を記録し、連続記録日数やバッジ獲得で、ふりかえり習慣をゆるやかに育てられます。
+**GratefulMoments** is a private gratitude journal app built with SwiftUI and SwiftData. It helps you notice and keep everyday gratitude by recording small moments with a title, note, and optional photo. A streak tracker and achievement badges turn reflection into a gentle daily habit.
 
 ![iOS](https://img.shields.io/badge/iOS-18.6%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-SwiftUI%20%7C%20SwiftData-orange)
 ![Platform](https://img.shields.io/badge/Platform-iOS-lightgray)
 
-## 主な機能
+## Key Features
 
-- **ありがとう日記**: タイトル、メモ、写真でうれしかったできごとを残す
-- **写真サポート**: `PhotosPicker` を使ってフォトライブラリから画像を添付
-- **六角形UI**: カスタム `HexagonLayout` による視覚的なできごと表示
-- **連続記録日数**: 毎日の記録習慣をストリークとして可視化
-- **バッジシステム**: 達成条件に応じてバッジをアンロック
-- **Assistant**: iOS 26 以降と Apple Intelligence 対応環境で、書いたできごとをもとにチャットでふりかえる
-- **SwiftData永続化**: できごととバッジをローカルに保存
-- **サンプルデータ**: プレビューやテスト用のできごとを用意
-- **Premiumサブスクリプション**: StoreKit による月額/年額プラン
-- **PDF/CSVエクスポート**: Premium で日記を外部に書き出し
+- **Moment journaling**: Log grateful moments with a title, note, and photo
+- **Photo support**: Attach images from your photo library with `PhotosPicker`
+- **Hexagonal UI**: Visualize moments with a custom `HexagonLayout`
+- **Streak tracking**: See your daily journaling habit at a glance
+- **Achievement badges**: Unlock badges as you progress
+- **Assistant**: Reflect on saved entries with a chat experience on iOS 26 or later with Apple Intelligence
+- **SwiftData persistence**: Store moments and badges locally on device
+- **Sample data**: Preview and test the app with built-in sample moments
+- **Premium subscriptions**: Monthly and yearly subscriptions via StoreKit
+- **PDF and CSV export**: Export your journal on Premium
 
-### 利用可能なバッジ
+### Available Badges
 
-- **はじめの一歩**: 最初のできごとを残す
-- **5つのありがとう**: 5つのできごとを残す
-- **写真の思い出**: 写真付きのできごとを3つ残す
-- **ことばと写真**: 写真とことばのあるできごとを5つ残す
-- **10のありがとう**: 他のすべてのバッジを集め、10件以上のできごとを残す
+- **Start the Journey**: Log your first moment
+- **5 Stars**: Record five moments
+- **Shutterbug**: Add three entries with photos
+- **Expressive**: Add five moments with both photo and text
+- **Perfect 10**: Collect all other badges and record at least 10 moments
 
-## 始め方
+## Getting Started
 
-### 必要環境
+### Requirements
 
-- iOS 26 SDK を含む Xcode
-- アプリのデプロイメントターゲット: iOS 18.6 以降
-- Assistant 機能: iOS 26 以降、Apple Intelligence 対応デバイス、Apple Intelligence の有効化
+- Xcode with the iOS 26 SDK
+- App deployment target: iOS 18.6 or later
+- Assistant feature: iOS 26 or later, an Apple Intelligence eligible device, and Apple Intelligence enabled
 
-### インストール手順
+### Installation
 
-1. リポジトリをクローン:
+1. Clone the repository:
    ```bash
    git clone https://github.com/masuda-so/GratefulMoments.git
    cd GratefulMoments
    ```
-2. Xcode で `GratefulMoments.xcodeproj` を開く
-3. シミュレーターや実機を選択し、**Cmd+R** でビルドして実行
+2. Open `GratefulMoments.xcodeproj` in Xcode
+3. Select a simulator or device, then press **Cmd+R** to build and run
 
-### Premium / StoreKit テスト
+### Premium / StoreKit Testing
 
-- 共有 scheme `GratefulMoments` には `GratefulMoments.storekit` を設定しています。Xcode からこの scheme を **Cmd+R** で実行すると、ローカル StoreKit の商品カタログで Premium 画面を確認できます。
-- `xcodebuild` や `simctl` で直接起動した場合は、Xcode の Run action に紐付くローカル StoreKit 設定が使われず、Sandbox/App Store Connect 側の商品状態を見ることがあります。
-- 実機の本番アプリは、App Store Connect で承認・配信されている商品だけを読み込めます。
+- The shared `GratefulMoments` scheme is configured with `GratefulMoments.storekit`. Run that scheme from Xcode with **Cmd+R** to verify the Premium screen against the local StoreKit catalog.
+- Direct `xcodebuild` or `simctl` launches do not attach the Xcode Run action's local StoreKit configuration, so they may show Sandbox/App Store Connect product state instead.
+- Production builds on real devices can only load products that are approved and available in App Store Connect.
 
-## 使い方
+## Usage
 
-1. Moments タブの `+` ボタンで新しいできごとを作成
-2. タイトル、メモ、写真を入力して保存
-3. Achievements タブで連続記録日数やバッジを確認
-4. 対応環境では Assistant タブで日記を振り返る
-5. 無料 30 件の制限後は Premium 画面から制限解除やエクスポートを利用
+1. Tap the `+` button in the Moments tab to create a new entry
+2. Enter a title, note, and optionally select a photo
+3. Switch to the Achievements tab to view your streak and badges
+4. On supported devices, use the Assistant tab to reflect on your saved moments
+5. After the free 30-moment limit, use the Premium screen to unlock unlimited moments and exports
 
-## プロジェクト構成
+## Project Structure
 
 ```
 GratefulMoments/
 ├── GratefulMoments/
-│   ├── Custom Views/         # 再利用 UI コンポーネント
-│   ├── Logic/                # データコンテナ、ストリーク計算、StoreKit
-│   ├── Models/               # Moment、Badge、バッジ管理
-│   ├── Resources/            # アセット、色、ローカライズ
+│   ├── Custom Views/         # Reusable UI components
+│   ├── Logic/                # Data container, streak calculation, and StoreKit
+│   ├── Models/               # Moment, Badge, and badge management
+│   ├── Resources/            # Assets, colors, and localization
 │   ├── Tabs/
-│   │   ├── Achievements/     # 達成・バッジ画面
-│   │   ├── Assistant/        # Apple Intelligence ふりかえりチャット
-│   │   ├── Moments/          # できごと一覧、入力、詳細
-│   │   ├── Premium/          # StoreKit ペイウォールとマーケティング
-│   │   └── Settings/         # 設定と法務リンク
-│   ├── ContentView.swift     # メインタブビュー
-│   └── GratefulMomentsApp.swift # アプリエントリーポイント
-├── StreakCalculatorTests/    # ユニットテスト
-├── Scripts/                  # ビルド・スクリーンショット自動化
-└── docs/                     # GitHub Pages ドキュメント
+│   │   ├── Achievements/     # Streak and badge screens
+│   │   ├── Assistant/        # Apple Intelligence reflection chat
+│   │   ├── Moments/          # Moment list, entry, and detail screens
+│   │   ├── Premium/          # StoreKit paywall and marketing content
+│   │   └── Settings/         # App settings and legal links
+│   ├── ContentView.swift     # Main tab view
+│   └── GratefulMomentsApp.swift # App entry point
+├── StreakCalculatorTests/    # Unit tests
+├── Scripts/                  # Build and screenshot automation
+└── docs/                     # GitHub Pages documentation
 ```
 
-## サポート・ヘルプ
+## Support
 
-- サポート情報: [Support](https://masuda-so.github.io/GratefulMoments/support/)
-- プライバシーポリシー: [Privacy Policy](https://masuda-so.github.io/GratefulMoments/privacy/)
-- 質問やバグ報告は [GitHub Issue](https://github.com/masuda-so/GratefulMoments/issues) へ
-- メール: so.masuda.2003@pm.me
+- Support information: [Support](https://masuda-so.github.io/GratefulMoments/support/)
+- Privacy policy: [Privacy Policy](https://masuda-so.github.io/GratefulMoments/privacy/)
+- For questions or bug reports, open a [GitHub Issue](https://github.com/masuda-so/GratefulMoments/issues)
+- Email: so.masuda.2003@pm.me
 
-## ライセンス
+## License
 
-このプロジェクトは Apache License 2.0 の下で公開されています。詳細は [LICENSE](./LICENSE) を参照してください。
+This project is licensed under the Apache License 2.0. See the [LICENSE](./LICENSE) file for details.
 
-## メンテナー・コントリビューション
+## Maintainer
 
-- **増田創 (Soh Masuda)** - オリジナル開発者
+- **Soh Masuda** (増田創) - Original developer
 
-コントリビューション歓迎です。コントリビューションガイドは準備中です。
+Contributions are welcome. Contribution guidelines are coming soon.
