@@ -28,3 +28,9 @@ Avoid by default:
 - Paid SaaS apps unless there is a clear recurring review burden.
 - Apps requiring broad repository write access without a narrow purpose.
 - Duplicate review bots on small repositories.
+## Pages Policy
+
+- This repository does not host GitHub Pages.
+- Public support, privacy, and marketing pages are managed in `GratefulMoments-pages`.
+- Do not re-enable Pages in this repository unless the governance policy is updated first.
+

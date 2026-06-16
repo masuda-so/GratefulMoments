@@ -86,13 +86,16 @@ GratefulMoments/
 │   └── GratefulMomentsApp.swift # App entry point
 ├── StreakCalculatorTests/    # Unit tests
 ├── Scripts/                  # Build and screenshot automation
-└── docs/                     # GitHub Pages documentation
+└── Scripts/                  # Build and screenshot automation
 ```
 
 ## Support
 
-- Support information: [Support](https://masuda-so.github.io/GratefulMoments/support/)
-- Privacy policy: [Privacy Policy](https://masuda-so.github.io/GratefulMoments/privacy/)
+Public support and privacy pages are managed in the dedicated [GratefulMoments-pages](https://github.com/masuda-so/GratefulMoments-pages) repository. GitHub Pages is intentionally disabled for this app source repository.
+
+
+- Support information: [Support](https://masuda-so.github.io/GratefulMoments-pages/support/)
+- Privacy policy: [Privacy Policy](https://masuda-so.github.io/GratefulMoments-pages/privacy/)
 - For questions or bug reports, open a [GitHub Issue](https://github.com/masuda-so/GratefulMoments/issues)
 - Email: so.masuda.2003@pm.me
 
