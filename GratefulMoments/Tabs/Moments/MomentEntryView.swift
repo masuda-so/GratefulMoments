@@ -128,8 +128,9 @@ struct MomentEntryView: View {
         )
         dataContainer.context.insert(newMoment)
         do {
-            try dataContainer.badgeManager.unlockBadges(newMoment: newMoment)
+            let unlockedBadges = try dataContainer.badgeManager.unlockBadges(newMoment: newMoment)
             try dataContainer.context.save()
+            playSaveFeedback(badgeUnlocked: !unlockedBadges.isEmpty)
             dismiss()
         } catch {
             dataContainer.context.rollback()
@@ -137,6 +138,15 @@ struct MomentEntryView: View {
                 title: "Save Failed",
                 message: "Your moment could not be saved. Please try again."
             )
+        }
+    }
+
+    /// Gives positive haptic reinforcement when a moment is saved, with an extra
+    /// celebratory tap when the save also unlocks a new badge.
+    private func playSaveFeedback(badgeUnlocked: Bool) {
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+        if badgeUnlocked {
+            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
         }
     }
 

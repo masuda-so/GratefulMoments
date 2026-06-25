@@ -15,11 +15,14 @@ class BadgeManager {
         self.modelContainer = modelContainer
     }
     
-    func unlockBadges(newMoment: Moment) throws {
+    /// Unlocks any badges whose criteria are newly satisfied by `newMoment`.
+    /// - Returns: The badges unlocked by this call, so callers can celebrate them (e.g. with haptics).
+    @discardableResult
+    func unlockBadges(newMoment: Moment) throws -> [Badge] {
         let context = modelContainer.mainContext
         let moments = try context.fetch(FetchDescriptor<Moment>())
         let lockedBadges = try context.fetch(FetchDescriptor<Badge>(predicate: #Predicate { $0.timestamp == nil }))
-        
+
         var newlyUnlocked: [Badge] = []
         for badge in lockedBadges {
             switch badge.details {
@@ -33,11 +36,13 @@ class BadgeManager {
                 continue
             }
         }
-        
+
         for badge in newlyUnlocked {
             badge.moment = newMoment
             badge.timestamp = newMoment.timestamp
         }
+
+        return newlyUnlocked
     }
     
     func loadBadgesIfNeeded() throws {

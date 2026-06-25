@@ -1,6 +1,28 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld day streak" : {
+      "comment" : "VoiceOver label announcing the current gratitude streak length.",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld日連続"
+          }
+        }
+      }
+    },
+    "Add Moment" : {
+      "comment" : "VoiceOver label for the button that creates a new moment.",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "できごとを追加"
+          }
+        }
+      }
+    },
     "^[%lld \nDays](inflect: true)" : {
       "localizations" : {
         "ja" : {

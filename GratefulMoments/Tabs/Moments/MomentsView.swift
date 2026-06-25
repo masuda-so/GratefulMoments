@@ -52,12 +52,14 @@ struct MomentsView: View {
                         Image(systemName: "square.and.arrow.up")
                     }
                     .disabled(moments.isEmpty || isExporting)
-                    
+                    .accessibilityLabel("Export Moments")
+
                     Button {
                         handleCreateMoment()
                     } label: {
                         Image(systemName: "plus")
                     }
+                    .accessibilityLabel("Add Moment")
                 }
             }
             .sheet(item: $momentDraft) { draft in
@@ -100,7 +102,7 @@ struct MomentsView: View {
     }
     
     private var pathItems: some View {
-        ForEach(Array(moments.enumerated()), id: \.0) { index, moment in
+        ForEach(Array(moments.enumerated()), id: \.element.persistentModelID) { index, moment in
             NavigationLink {
                 MomentDetailView(moment: moment)
             } label: {
@@ -130,6 +132,8 @@ struct MomentsView: View {
             }
             .font(.subheadline)
             .padding()
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("\(streak) day streak")
         }
     }
 
