@@ -71,7 +71,7 @@ GratefulMoments is free to start, with optional Premium subscriptions via StoreK
 - **Free**: up to 30 moments
 - **Premium** (monthly / yearly): unlimited moments, PDF & CSV export, and the reflection Assistant
 
-## Getting Started
+## Quickstart
 
 ### Requirements
 

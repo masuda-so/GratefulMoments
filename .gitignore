@@ -66,3 +66,10 @@ fastlane/test_output
 
 # GitHub Pages site lives in its own repository (masuda-so/GratefulMoments-pages)
 /AppStoreConnectAssets/GitHubPages/
+
+# Generated local artifacts
+/build/
+/.build/
+/.swiftpm/
+/__pycache__/
+*.pyc

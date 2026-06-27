@@ -10,7 +10,7 @@ A private gratitude journal built with SwiftUI and SwiftData. Capture small mome
 
 ---
 
-## About
+## Overview
 
 **GratefulMoments** is a private gratitude journal app built with SwiftUI and SwiftData. It helps you notice and keep everyday gratitude by recording small moments with a title, note, and optional photo. A streak tracker and achievement badges turn reflection into a gentle daily habit.
 
@@ -34,7 +34,7 @@ A private gratitude journal built with SwiftUI and SwiftData. Capture small mome
 - **Expressive**: Add five moments with both photo and text
 - **Perfect 10**: Collect all other badges and record at least 10 moments
 
-## Architecture
+## Development
 
 ### Project Structure
 
@@ -71,7 +71,7 @@ GratefulMoments is free to start, with optional Premium subscriptions via StoreK
 - **Free**: up to 30 moments
 - **Premium** (monthly / yearly): unlimited moments, PDF & CSV export, and the reflection Assistant
 
-## Getting Started
+## Quickstart
 
 ### Requirements
 
