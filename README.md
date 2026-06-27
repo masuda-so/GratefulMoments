@@ -14,6 +14,10 @@ A private gratitude journal built with SwiftUI and SwiftData. Capture small mome
 
 **GratefulMoments** is a private gratitude journal app built with SwiftUI and SwiftData. It helps you notice and keep everyday gratitude by recording small moments with a title, note, and optional photo. A streak tracker and achievement badges turn reflection into a gentle daily habit.
 
+## Why this project is useful
+
+GratefulMoments gives you a calm, private place to capture daily gratitude, keep streaks visible, and turn reflection into a simple habit without relying on a cloud account.
+
 ## Key Features
 
 - **Moment journaling**: Log grateful moments with a title, note, and photo
@@ -114,11 +118,17 @@ Preparing for App Store release. See the in-repo App Store checklist for submiss
 - Questions or bug reports: open a [GitHub Issue](https://github.com/masuda-so/GratefulMoments/issues)
 - Email: so.masuda.2003@pm.me
 
+## Where to get help
+
+- Review the support links above for product help and privacy details.
+- Open a GitHub issue for bugs or feature requests.
+- See [CONTRIBUTING](./CONTRIBUTING.md) for the contribution workflow.
+
 ## License
 
 Licensed under the Apache License 2.0. See the [LICENSE](./LICENSE) file for details.
 
-## Maintainer
+## Maintainers and contributing
 
 - **Soh Masuda** (増田創) — original developer
 
