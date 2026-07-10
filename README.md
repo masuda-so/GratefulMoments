@@ -68,7 +68,7 @@ GratefulMoments/
 
 ## Plans
 
-GratefulMoments is free to start, with optional Premium subscriptions via StoreKit.
+小さなありがとう日記 (Grateful Moments Journal) is free to start, with optional Premium subscriptions via StoreKit.
 
 - **Free**: up to 30 moments
 - **Premium** (monthly / yearly): unlimited moments, PDF & CSV export, and the reflection Assistant

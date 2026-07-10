@@ -6,7 +6,7 @@
 
 ## Current Position
 
-GratefulMoments is a local-first gratitude journal with photos, Apple Intelligence-assisted reflection, Premium subscriptions, and PDF/CSV export.
+小さなありがとう日記 (Grateful Moments Journal) is a local-first gratitude journal with photos, Apple Intelligence-assisted reflection, Premium subscriptions, and PDF/CSV export.
 
 ## Checks
 

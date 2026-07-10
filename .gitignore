@@ -73,3 +73,10 @@ fastlane/test_output
 /.swiftpm/
 /__pycache__/
 *.pyc
+
+# Icon source files are managed outside this repository.
+*.icon/
+* Exports/
+Design/IconReferences/
+Design/IconComposer/
+Design/IconConcepts/

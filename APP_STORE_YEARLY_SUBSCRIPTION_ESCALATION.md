@@ -7,7 +7,8 @@ Last checked: 2026-06-11 JST
 - App: 小さなありがとう日記
 - App Apple ID: 6766864082
 - Team / legal entity: Ether LLC
-- Subscription group: GratefulMoments Premium
+- Public subscription display name should be 小さなありがとう日記 Premium (ja-JP) / Grateful Moments Journal Premium (en-US)
+- Historical subscription group label: GratefulMoments Premium
 - Subscription group ID: 22070991
 - Monthly subscription:
   - Reference name: Premium Monthly
@@ -65,7 +66,7 @@ App:
 - Team / legal entity: Ether LLC
 
 Subscription group:
-- Name: GratefulMoments Premium
+- Name: GratefulMoments Premium (historical/internal label; public display should be 小さなありがとう日記 Premium / Grateful Moments Journal Premium)
 - Group ID: 22070991
 
 Subscription requiring help:

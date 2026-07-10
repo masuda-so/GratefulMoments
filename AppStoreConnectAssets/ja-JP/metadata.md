@@ -63,4 +63,4 @@ Premium subscription product IDs:
 
 このビルドでは Settings に Privacy Policy と Terms of Use へのリンクを表示し、Premium 画面にも StoreKit のポリシーリンクを表示しています。
 
-初回 auto-renewable subscriptions 2 件を app version 1.0.1 (4) と一緒に審査してください。
+auto-renewable subscriptions 2 件を現在の app version 1.0.3 と一緒に審査してください。

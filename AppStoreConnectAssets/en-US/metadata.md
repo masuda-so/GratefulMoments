@@ -61,4 +61,4 @@ Premium subscription product IDs:
 - smallthanksdiary.premium.monthly
 - smallthanksdiary.premium.yearly
 
-Please review these first auto-renewable subscriptions with app version 1.0.1 (4). The Premium screen includes Privacy Policy and Terms of Use links.
+Please review these auto-renewable subscriptions with the current app version 1.0.3. The Premium screen includes Privacy Policy and Terms of Use links.
